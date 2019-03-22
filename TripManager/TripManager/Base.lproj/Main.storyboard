@@ -570,6 +570,9 @@
                                 <state key="normal" title="new">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="BzV-Za-6f8" kind="presentation" id="lNJ-h5-ufk"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i6Y-4r-FuA">
                                 <rect key="frame" x="78" y="138" width="262" height="50"/>
