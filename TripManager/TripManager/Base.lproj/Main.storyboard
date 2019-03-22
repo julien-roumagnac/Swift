@@ -206,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsh-6P-xOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="-1498"/>
+            <point key="canvasLocation" x="1998" y="-1498"/>
         </scene>
         <!--New Depense-->
         <scene sceneID="n0k-2a-UAp">
@@ -347,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8l-fN-GRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2198" y="-1498"/>
+            <point key="canvasLocation" x="5390" y="-1518"/>
         </scene>
         <!--Bilan Perso view-->
         <scene sceneID="XJJ-nt-fBy">
@@ -538,7 +538,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bilan general" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT9-xc-hYz">
-                                <rect key="frame" x="126.5" y="40" width="122" height="24"/>
+                                <rect key="frame" x="126.5" y="84" width="122" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -847,7 +847,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awm-P7-sGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2908" y="-147"/>
+            <point key="canvasLocation" x="2911" y="-564"/>
         </scene>
         <!--Membres-->
         <scene sceneID="Iwr-t3-3xZ">
@@ -879,7 +879,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4J-eG-p6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4690" y="-574"/>
+            <point key="canvasLocation" x="5390" y="-564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Sd-rJ-MPb">
@@ -901,6 +901,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="m9t-Yb-qFh"/>
+        <segue reference="6zt-E1-Pof"/>
     </inferredMetricsTieBreakers>
 </document>
