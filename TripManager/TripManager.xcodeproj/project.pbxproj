@@ -10,6 +10,8 @@
 		0266D3B22247A2360018EC7B /* ListeVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266D3B12247A2360018EC7B /* ListeVoyageViewController.swift */; };
 		0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */; };
 		02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */; };
+		02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */; };
+		02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */; };
 		0BAF8D2D2244006A002C3C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D2C2244006A002C3C8F /* AppDelegate.swift */; };
 		0BAF8D322244006A002C3C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF8D302244006A002C3C8F /* Main.storyboard */; };
 		0BAF8D352244006A002C3C8F /* TripManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D332244006A002C3C8F /* TripManager.xcdatamodeld */; };
@@ -40,6 +42,8 @@
 		0266D3B12247A2360018EC7B /* ListeVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeVoyageViewController.swift; sourceTree = "<group>"; };
 		0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageTableViewCell.swift; sourceTree = "<group>"; };
 		02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVoyageViewController.swift; sourceTree = "<group>"; };
+		02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVoyageViewController.swift; sourceTree = "<group>"; };
+		02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreTableViewCell.swift; sourceTree = "<group>"; };
 		0BAF8D292244006A002C3C8F /* TripManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF8D2C2244006A002C3C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BAF8D312244006A002C3C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 			children = (
 				0266D3B12247A2360018EC7B /* ListeVoyageViewController.swift */,
 				02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */,
+				02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */,
+				02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +299,8 @@
 				0266D3B22247A2360018EC7B /* ListeVoyageViewController.swift in Sources */,
 				0BAF8D2D2244006A002C3C8F /* AppDelegate.swift in Sources */,
 				02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */,
+				02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */,
+				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
 				0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

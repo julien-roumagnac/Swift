@@ -10,21 +10,26 @@ import Foundation
 import UIKit
 import CoreData
 
-class NewVoyageViewController: UIViewController, UITextFieldDelegate{
+class NewVoyageViewController: UIViewController, UITextFieldDelegate,UITableViewDataSource, UITableViewDelegate{
     
-    var newVoyage : Voyage?
-    var toolbar: UIToolbar!
+    var membres: [Membres] = []
     
     @IBOutlet weak var nomNewVoyage: UITextField!
     @IBOutlet weak var photoNewVoyage: UIImageView!
     @IBOutlet weak var nomNewMembre: UITextField!
     @IBOutlet weak var prenomNewMembre: UITextField!
     @IBOutlet weak var dateANewMembre: UIDatePicker!
-    @IBOutlet weak var tableNewMembres: UITableView!
+    @IBOutlet weak var tableMembres: UITableView!
+    @IBAction func deleteAction(_ sender: MembreTableViewCell) {
+        
+    }
+    
+    @IBAction func ajoutAction(_ sender: Any) {
+        self.newMembre(nom: self.nomNewMembre.text ?? "", prenom: self.prenomNewMembre.text ?? "")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
     
@@ -41,5 +46,31 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func okAction(_ sender: Any) {
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.membres.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "membreCell", for: indexPath) as! MembreTableViewCell
+        cell.nomMembre.text = self.membres[indexPath.row].nom
+        cell.prenomMembre.text = self.membres[indexPath.row].prenom
+        return cell
+    }
+    
+    func newMembre(nom: String, prenom: String){
+        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
+            print("error")
+            return
+        }
+        let context = appD.persistentContainer.viewContext
+        let m = Membres(context: context)
+        m.nom = nom
+        m.prenom = prenom
+        self.membres.append(m)
+        tableMembres.reloadData()
+        self.nomNewMembre.text = ""
+        self.prenomNewMembre.text = ""
     }
 }

@@ -150,15 +150,18 @@
                                     <constraint firstAttribute="width" constant="36" id="fwG-kU-v5Z"/>
                                 </constraints>
                                 <state key="normal" title="Ajout"/>
+                                <connections>
+                                    <action selector="ajoutAction:" destination="m1Q-b5-tGq" eventType="touchUpInside" id="MpJ-Th-aZ1"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5FA-UQ-5Qh">
                                 <rect key="frame" x="20" y="444" width="326" height="156"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="v1z-6r-2Mq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="membreCell" id="v1z-6r-2Mq" customClass="MembreTableViewCell" customModule="TripManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="326" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v1z-6r-2Mq" id="yEc-Xl-9l2">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v1z-6r-2Mq" id="yEc-Xl-9l2" customClass="MembreTableViewCell" customModule="TripManager" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="326" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -183,11 +186,22 @@
                                                     <state key="normal" title="X">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteAction:" destination="m1Q-b5-tGq" eventType="touchUpInside" id="LTO-f6-29O"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nomMembre" destination="Vjw-fu-Zb3" id="Vrm-Js-ETC"/>
+                                            <outlet property="prenomMembre" destination="Hr6-ti-KWj" id="5Ri-AJ-dJQ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="m1Q-b5-tGq" id="waX-Qo-cfs"/>
+                                    <outlet property="delegate" destination="m1Q-b5-tGq" id="V7N-3a-yOP"/>
+                                </connections>
                             </tableView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8yb-JB-ZOS">
                                 <rect key="frame" x="123" y="371" width="223" height="54"/>
@@ -219,6 +233,7 @@
                                 <state key="normal" title="OK"/>
                                 <connections>
                                     <action selector="okAction:" destination="m1Q-b5-tGq" eventType="touchUpInside" id="ZKm-cm-LQt"/>
+                                    <segue destination="VA7-qz-Oik" kind="unwind" unwindAction="unwindToNewVoyage:" id="QKX-Fp-zmo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNt-wn-Rme">
@@ -286,10 +301,11 @@
                         <outlet property="nomNewVoyage" destination="o4n-Xe-5lS" id="Zal-eN-hhc"/>
                         <outlet property="photoNewVoyage" destination="6ft-dA-JJ7" id="KJc-pE-8Vm"/>
                         <outlet property="prenomNewMembre" destination="BjH-Tb-0oC" id="dHA-E3-EcJ"/>
-                        <outlet property="tableNewMembres" destination="5FA-UQ-5Qh" id="Nxd-0S-zwW"/>
+                        <outlet property="tableMembres" destination="5FA-UQ-5Qh" id="IPo-Y3-TGt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsh-6P-xOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VA7-qz-Oik" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1997.5999999999999" y="-1498.2008995502249"/>
         </scene>
@@ -568,10 +584,14 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="31/05/19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5H-e9-eEo">
-                                                    <rect key="frame" x="141" y="12" width="67" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="31/05/19" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5H-e9-eEo">
+                                                    <rect key="frame" x="114" y="12" width="110" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="2Hs-Nx-Ucf"/>
+                                                        <constraint firstAttribute="width" constant="151" id="9zS-DV-pOM"/>
+                                                        <constraint firstAttribute="height" constant="12" id="oPz-CB-0pu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -660,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="-564"/>
+            <point key="canvasLocation" x="1028" y="-564.46776611694156"/>
         </scene>
         <!--Detail Voyage View Controller-->
         <scene sceneID="LQ0-77-VI0">
