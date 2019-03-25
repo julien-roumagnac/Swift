@@ -20,12 +20,17 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     @IBOutlet weak var prenomNewMembre: UITextField!
     @IBOutlet weak var dateANewMembre: UIDatePicker!
     @IBOutlet weak var tableMembres: UITableView!
-    @IBAction func deleteAction(_ sender: MembreTableViewCell) {
-        
+    
+    @IBAction func deleteAction(_ sender: UIButton) {
+        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: self.tableMembres)
+        let indexPath = self.tableMembres.indexPathForRow(at: buttonPosition)
+        self.deleteNewMembre(at: indexPath!.row)
+        tableMembres.reloadData()
     }
     
     @IBAction func ajoutAction(_ sender: Any) {
         self.newMembre(nom: self.nomNewMembre.text ?? "", prenom: self.prenomNewMembre.text ?? "")
+        tableMembres.reloadData()
     }
     
     override func viewDidLoad() {
@@ -69,8 +74,19 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         m.nom = nom
         m.prenom = prenom
         self.membres.append(m)
-        tableMembres.reloadData()
         self.nomNewMembre.text = ""
         self.prenomNewMembre.text = ""
+    }
+    
+    func deleteNewMembre(at: Int){
+        let m = membres[at]
+        self.membres.remove(at: at)
+        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
+            print("error")
+            return
+        }
+        let context = appD.persistentContainer.viewContext
+        context.delete(m)
+        
     }
 }

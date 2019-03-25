@@ -824,10 +824,14 @@
                         <viewLayoutGuide key="safeArea" id="cQn-aa-Jfx"/>
                     </view>
                     <navigationItem key="navigationItem" id="b8E-eX-eFM"/>
+                    <connections>
+                        <outlet property="titreBilan" destination="vT9-xc-hYz" id="T1E-tA-46d"/>
+                        <outlet property="titreVoyage" destination="q83-pA-FAi" id="IgA-PX-10C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iM2-AN-mcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3724" y="-857"/>
+            <point key="canvasLocation" x="3724" y="-857.72113943028489"/>
         </scene>
         <!--Membre View-->
         <scene sceneID="Eau-2T-xXm">

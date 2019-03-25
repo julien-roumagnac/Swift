@@ -13,9 +13,12 @@ import CoreData
 class DetailVoyageViewController: UIViewController {
     var voyage : Voyage?
 
+    @IBOutlet weak var titreBilan: UILabel!
+    @IBOutlet weak var titreVoyage: UILabel!
+    
     override func viewDidLoad() {
         if let v = self.voyage{
-            print("nom du voyage",v.nom!)
+            titreBilan.text = v.nom
         }
         else {
             print("pas de voyage recu")
