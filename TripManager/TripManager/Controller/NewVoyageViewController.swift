@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class NewVoyageViewController: UIViewController, UITextFieldDelegate,UITableViewDataSource, UITableViewDelegate{
+class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate{
     
     var membres: [Membres] = []
     

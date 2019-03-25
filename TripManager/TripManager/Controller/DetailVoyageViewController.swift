@@ -10,7 +10,15 @@ import Foundation
 import UIKit
 import CoreData
 
-class DetailVoyageViewController: UIViewController{
+class DetailVoyageViewController: UIViewController {
     var voyage : Voyage?
-    
+
+    override func viewDidLoad() {
+        if let v = self.voyage{
+            print("nom du voyage",v.nom!)
+        }
+        else {
+            print("pas de voyage recu")
+        }
+    }
 }

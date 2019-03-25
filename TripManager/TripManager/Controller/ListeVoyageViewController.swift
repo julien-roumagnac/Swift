@@ -48,8 +48,6 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "voyageCell", for: indexPath) as! VoyageTableViewCell
-        //cell.nomVoyage.text = self.voyages[indexPath.row].nom
-        //cell.dateVoyage.text = self.voyages[indexPath.row].dateDebut
         cell.nomVoyage?.text = self.voyages[indexPath.row].nom
         cell.dateVoyage?.text = self.voyages[indexPath.row].dateDebut
         return cell
@@ -58,7 +56,6 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func unwindToNewVoyage(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
-        print("je suis créé")
         let newVoyageController = unwindSegue.source as! NewVoyageViewController
         let nomVoyage = newVoyageController.nomNewVoyage.text ?? ""
         let date = Date()
@@ -68,15 +65,16 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? DetailVoyageViewController{
-            if let cell = sender as? UITableViewCell{
-                guard let index = voyageTable.indexPath(for: cell) else {
-                    return
+        if (sender as? VoyageTableViewCell) != nil {
+            if let detailVoyageController = segue.destination as? DetailVoyageViewController {
+                if let index = self.voyageTable.indexPathForSelectedRow{
+                    detailVoyageController.voyage = self.voyages[index.row]
+                    self.voyageTable.deselectRow(at: index, animated: true)
                 }
-                destination.voyage = voyages[index.row]
             }
         }
     }
+    
     func saveNewVoyage(nomVoyage: String,photo: UIImage?,dateDepart: Date,membres: [Membres]){
         guard let appD = UIApplication.shared.delegate as? AppDelegate else{
             print("error")
