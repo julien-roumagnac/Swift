@@ -20,6 +20,24 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     @IBOutlet weak var prenomNewMembre: UITextField!
     @IBOutlet weak var dateANewMembre: UIDatePicker!
     @IBOutlet weak var tableMembres: UITableView!
+    @IBOutlet weak var dateVoyage: UIDatePicker!
+    
+    @IBAction func saveAction(_ sender: Any) {
+        let nom : String = nomNewVoyage.text ?? ""
+        let date : Date = dateVoyage.date
+        guard (nom != "") else {return }
+        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
+            print("error")
+            return
+        }
+        let context = appD.persistentContainer.viewContext
+        let voyage = Voyage(context: context)
+        voyage.nom = nom
+        voyage.dateDebut = date.description
+        voyage.photo = nil
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     
     @IBAction func deleteAction(_ sender: UIButton) {
         let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: self.tableMembres)
@@ -29,7 +47,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     }
     
     @IBAction func ajoutAction(_ sender: Any) {
-        self.newMembre(nom: self.nomNewMembre.text ?? "", prenom: self.prenomNewMembre.text ?? "")
+        self.newMembre(nom: self.nomNewMembre.text ?? "", prenom: self.prenomNewMembre.text ?? "",date: dateANewMembre.date)
         tableMembres.reloadData()
     }
     
@@ -50,8 +68,6 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func okAction(_ sender: Any) {
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.membres.count
@@ -64,7 +80,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         return cell
     }
     
-    func newMembre(nom: String, prenom: String){
+    func newMembre(nom: String, prenom: String, date: Date){
         guard let appD = UIApplication.shared.delegate as? AppDelegate else{
             print("error")
             return
@@ -73,6 +89,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         let m = Membres(context: context)
         m.nom = nom
         m.prenom = prenom
+        m.dateArrivee = date.description
         self.membres.append(m)
         self.nomNewMembre.text = ""
         self.prenomNewMembre.text = ""
