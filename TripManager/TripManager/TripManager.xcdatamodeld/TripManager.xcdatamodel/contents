@@ -9,6 +9,7 @@
     <entity name="Membres" representedClassName="Membres" syncable="YES" codeGenerationType="class">
         <attribute name="dateArrivee" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateDepart" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dette" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prenom" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="destination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Voyage" inverseName="voyageurs" inverseEntity="Voyage" syncable="YES"/>
@@ -29,7 +30,7 @@
     </entity>
     <elements>
         <element name="Depense" positionX="319.73046875" positionY="-74.375" width="128" height="105"/>
-        <element name="Membres" positionX="-32.859375" positionY="-108.76171875" width="128" height="135"/>
+        <element name="Membres" positionX="-32.859375" positionY="-108.76171875" width="128" height="150"/>
         <element name="Paiement" positionX="118.7265625" positionY="118.34375" width="128" height="103"/>
         <element name="Voyage" positionX="-179.75390625" positionY="106.3125" width="128" height="118"/>
     </elements>
