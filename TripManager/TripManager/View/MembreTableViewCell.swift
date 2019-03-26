@@ -12,4 +12,5 @@ class MembreTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nomMembre: UILabel!
     @IBOutlet weak var prenomMembre: UILabel!
+    
 }

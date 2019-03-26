@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		0266D3B22247A2360018EC7B /* ListeVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266D3B12247A2360018EC7B /* ListeVoyageViewController.swift */; };
 		0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */; };
-		02BE96E1224A3FA7009EADCF /* TitreVoyageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE96E0224A3FA7009EADCF /* TitreVoyageController.swift */; };
 		02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE96E2224A4640009EADCF /* NewDepenseViewController.swift */; };
+		02BE96E5224A7DF7009EADCF /* MembreDepenseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */; };
 		02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */; };
 		02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */; };
 		02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */; };
@@ -43,8 +43,8 @@
 /* Begin PBXFileReference section */
 		0266D3B12247A2360018EC7B /* ListeVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeVoyageViewController.swift; sourceTree = "<group>"; };
 		0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageTableViewCell.swift; sourceTree = "<group>"; };
-		02BE96E0224A3FA7009EADCF /* TitreVoyageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitreVoyageController.swift; sourceTree = "<group>"; };
 		02BE96E2224A4640009EADCF /* NewDepenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDepenseViewController.swift; sourceTree = "<group>"; };
+		02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreDepenseViewCell.swift; sourceTree = "<group>"; };
 		02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVoyageViewController.swift; sourceTree = "<group>"; };
 		02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVoyageViewController.swift; sourceTree = "<group>"; };
 		02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreTableViewCell.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 			children = (
 				0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */,
 				02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */,
-				02BE96E0224A3FA7009EADCF /* TitreVoyageController.swift */,
+				02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,11 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BAF8D352244006A002C3C8F /* TripManager.xcdatamodeld in Sources */,
+				02BE96E5224A7DF7009EADCF /* MembreDepenseViewCell.swift in Sources */,
 				0266D3B22247A2360018EC7B /* ListeVoyageViewController.swift in Sources */,
 				0BAF8D2D2244006A002C3C8F /* AppDelegate.swift in Sources */,
 				02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */,
 				02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */,
-				02BE96E1224A3FA7009EADCF /* TitreVoyageController.swift in Sources */,
 				02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */,
 				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
 				0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */,

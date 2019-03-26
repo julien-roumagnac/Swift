@@ -42,8 +42,6 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.voyages.count
-        //return self.test.count
         guard let section = self.voyageFetched.sections?[section] else {
             fatalError("Unexpected section number")
         }
@@ -131,6 +129,8 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    //plus utilisé
+    /*
     func saveNewVoyage(nomVoyage: String,photo: UIImage?,dateDepart: Date,membres: [Membres]){
         guard let context = self.getContext() else{ return }
         let voyage = Voyage(context: context)
@@ -139,6 +139,7 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
         voyage.photo = nil
         for membre in membres {
             voyage.addToVoyageurs(membre)
+            membre.destination = voyage
         }
         do{
             try context.save()
@@ -148,7 +149,7 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
             print("errooooor")
             return
         }
-    }
+    }*/
     
     func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
         let voyage = self.voyageFetched.object(at: indexPath)

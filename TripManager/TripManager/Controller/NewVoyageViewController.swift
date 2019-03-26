@@ -35,6 +35,11 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         voyage.nom = nom
         voyage.dateDebut = date.description
         voyage.photo = nil
+        for membre in membres {
+            voyage.addToVoyageurs(membre)
+            membre.destination = voyage
+            print(membre.destination!.nom)
+        }
         self.dismiss(animated: true, completion: nil)
         
     }

@@ -12,16 +12,18 @@ import CoreData
 
 class DetailVoyageViewController: UIViewController {
     var voyage : Voyage?
-    var containerController : TitreVoyageView?
     
     @IBOutlet weak var titreBilan: UILabel!
     
-    
     override func viewDidLoad() {
         titreBilan.text = self.voyage?.nom
-        //let titreVoyage = containerTitre as? TitreVoyageView
-        containerController?.titre.text = self.voyage?.nom
     }
     
-    @IBOutlet weak var containerTitre: UIView!
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (sender as? UIButton) != nil {
+            if let newDepenseController = segue.destination as? NewDepenseViewController {
+                newDepenseController.voyage = voyage
+            }
+        }
+    }
 }
