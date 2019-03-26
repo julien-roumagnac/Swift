@@ -38,10 +38,8 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         for membre in membres {
             voyage.addToVoyageurs(membre)
             membre.destination = voyage
-            print(membre.destination!.nom)
         }
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func deleteAction(_ sender: UIButton) {

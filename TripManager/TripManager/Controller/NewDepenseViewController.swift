@@ -41,6 +41,7 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         catch let error as NSError{
             print("error")
         }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,9 +56,8 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "membreDepCell", for: indexPath) as! MembreDepenseViewCell
         print(cell)
         let membre = self.membresFetched.object(at: indexPath)
-        cell.nom?.text = membre.nom
+        cell.nom?.text = String((membre.nom?.prefix(1))!)
         cell.prenom?.text = membre.prenom
-        cell.dette?.text = "test"
         return cell
     }
     
@@ -86,6 +86,30 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
     }
     
     @IBAction func cancelAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveAction(_ sender: Any) {
+        let montant : String = nomNewDepense.text ?? ""
+        let photo : UIImage? = nil
+        guard (montant != "") else {return }
+        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
+            print("error")
+            return
+        }
+        let context = appD.persistentContainer.viewContext
+        let depense = Depense(context: context)
+        //depense.montant = Double(nomNewDepense)!
+        //depense.photo = nil
+        
+        //depense.addToParticipants(<#T##value: Paiement##Paiement#>)
+        /*depense.montant = nom
+        depense = date.description
+        voyage.photo = nil
+        for membre in membres {
+            voyage.addToVoyageurs(membre)
+            membre.destination = voyage
+        }*/
         self.dismiss(animated: true, completion: nil)
     }
     
