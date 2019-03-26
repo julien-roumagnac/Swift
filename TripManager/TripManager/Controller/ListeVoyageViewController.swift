@@ -21,7 +21,7 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
         let request : NSFetchRequest<Voyage> = Voyage.fetchRequest()
         let appD = UIApplication.shared.delegate as? AppDelegate
         let context = appD!.persistentContainer.viewContext
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Voyage.dateDebut),ascending:true)]
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Voyage.dateDebut),ascending:false)]
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -29,14 +29,7 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //guard let appD = UIApplication.shared.delegate as? AppDelegate else{
-        //    print("error")
-        //    return
-        //}
-        //let context = appD.persistentContainer.viewContext
-        //let request : NSFetchRequest<Voyage> = Voyage.fetchRequest()
         do{
-            //try self.voyages = context.fetch(request)
             try self.voyageFetched.performFetch()
         }
         catch let error as NSError{
