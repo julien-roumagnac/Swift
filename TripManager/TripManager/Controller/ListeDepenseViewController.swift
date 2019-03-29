@@ -10,48 +10,106 @@ import Foundation
 import UIKit
 import CoreData
 
-class ListeDepenseViewController : UIViewController,UITableViewDataSource, UITableViewDelegate,NSFetchedResultsControllerDelegate{
+class ListeDepenseViewController : UIViewController,UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
     
+
     var voyage : Voyage?
-    var depense : [Depense] = [] 
     
     @IBOutlet weak var titreVoyage: UILabel!
+    @IBOutlet weak var tableDepense : UITableView!
+    
+    
+    
+    fileprivate lazy var depenseFetched : NSFetchedResultsController<Depense> = {
+        //prepare a requet
+        let request : NSFetchRequest<Depense> = Depense.fetchRequest()
+        let appD = UIApplication.shared.delegate as? AppDelegate
+        let context = appD!.persistentContainer.viewContext
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Depense.dateDepense),ascending:false)]
+        //request.predicate = NSPredicate(format: "participants.payeur.destination = %@", voyage!)
+        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultController.delegate = self
+        return fetchResultController
+    }()
     
     override func viewDidLoad() {
         titreVoyage.text = self.voyage?.nom
         super.viewDidLoad()
-        self.initDepense()
+        //self.initDepense()
+        do{
+            try self.depenseFetched.performFetch()
+        }
+        catch let error as NSError{
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return depense.count
+        guard let section = self.depenseFetched.sections?[section] else {
+            fatalError("Unexpected section number")
+        }
+        return section.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "depenseCell", for: indexPath) as! DepenseViewCell
-        let dep = self.depense[indexPath.row]
+        let dep = self.depenseFetched.object(at: indexPath)
         cell.date.text = dep.dateDepense
         cell.prix.text = dep.montant.description
         return cell
     }
     
-    @IBOutlet weak var tableDepense : UITableView!
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableDepense.beginUpdates()
+    }
     
-    func initDepense(){
-        let voyageurs = self.voyage?.voyageurs?.allObjects
-        guard voyageurs!.count > 0 else {return print("pas de voyageurs")}
-        for voyageur in voyageurs! {
-            let v = voyageur as! Membres
-            let paiements = v.frais?.allObjects as! [Paiement]
-            guard paiements.count > 0 else {return }
-            for paiement in paiements {
-                
-                let dep = paiement.objectif
-                if !(depense.contains(dep!)){
-                    depense.append(dep!)
-                }
-            }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableDepense.endUpdates()
+        //
+        guard let context = self.getContext() else{ return }
+        do{
+            try context.save()
         }
+        catch let error as NSError{
+            print("errooooor")
+            return
+        }
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            if let indexPath = indexPath{
+                self.tableDepense.deleteRows(at: [indexPath], with: .automatic)
+            }
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                self.tableDepense.insertRows(at: [newIndexPath], with: .fade)
+            }
+        default:
+            break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "Delete", handler: self.deleteHandlerAction)
+        return [delete]
+    }
+    
+    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
+        let dep = self.depenseFetched.object(at: indexPath)
+        if let context = self.getContext(){
+            context.delete(dep)
+        }
+    }
+    
+    func getContext() -> NSManagedObjectContext?{
+        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
+            print("error")
+            return nil
+        }
+        return appD.persistentContainer.viewContext
     }
     
     

@@ -25,8 +25,7 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         let appD = UIApplication.shared.delegate as? AppDelegate
         let context = appD!.persistentContainer.viewContext
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Membres.nom),ascending:false)]//
-        let destinationNom = voyage!.nom! 
-        request.predicate = NSPredicate(format: "destination.nom = %@", destinationNom)
+        request.predicate = NSPredicate(format: "destination = %@", voyage!)
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -108,15 +107,17 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         let cells = self.tableMembresDepense.visibleCells as! [MembreDepenseViewCell]
         for cell in cells {
             if cell.estConcerne.isOn {
+                let context = appD.persistentContainer.viewContext
                 let newPaiement = Paiement(context: context)
                 let nomPayeur = cell.nom.text
                 let prenomPayeur = cell.prenom.text
                 //trouver le membre
                 let m = self.findMembre(nom: nomPayeur!, prenom: prenomPayeur!)
                 guard m != nil else {print("probleme"); return}
+                newPaiement.payeur = m
+                //les montants
                 newPaiement.montantDu = (NumberFormatter().number(from: cell.montantDu!.text!)?.doubleValue)!
                 newPaiement.montantPaye = (NumberFormatter().number(from: cell.montantPaye!.text!)?.doubleValue)!
-                newPaiement.payeur = m
                 depense.addToParticipants(newPaiement)
             }
         }

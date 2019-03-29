@@ -4,7 +4,7 @@
         <attribute name="dateDepense" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="montant" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="participants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Paiement" inverseName="objectif" inverseEntity="Paiement" syncable="YES"/>
+        <relationship name="participants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Paiement" inverseName="objectif" inverseEntity="Paiement" syncable="YES"/>
     </entity>
     <entity name="Membres" representedClassName="Membres" syncable="YES" codeGenerationType="class">
         <attribute name="dateArrivee" optional="YES" attributeType="String" syncable="YES"/>

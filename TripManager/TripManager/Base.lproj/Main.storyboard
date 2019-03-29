@@ -505,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8l-fN-GRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4856.8000000000002" y="-1393.8530734632684"/>
+            <point key="canvasLocation" x="5687" y="-1385"/>
         </scene>
         <!--Bilan Perso view-->
         <scene sceneID="XJJ-nt-fBy">
@@ -1181,9 +1181,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="date" destination="mLQ-1W-Axr" id="R1b-ra-OSO"/>
                                             <outlet property="prix" destination="aMe-At-HmD" id="hVO-ue-Uq5"/>
+                                            <outletCollection property="gestureRecognizers" destination="dIv-gQ-s9G" appends="YES" id="uP8-RB-0Td"/>
                                             <segue destination="BzV-Za-6f8" kind="presentation" id="LMW-M1-zbu"/>
                                         </connections>
                                     </tableViewCell>
@@ -1225,6 +1227,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4J-eG-p6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="dIv-gQ-s9G"/>
             </objects>
             <point key="canvasLocation" x="4856.8000000000002" y="-564.46776611694156"/>
         </scene>
