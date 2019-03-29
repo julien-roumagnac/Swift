@@ -13,6 +13,9 @@
 		02BE96E5224A7DF7009EADCF /* MembreDepenseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */; };
 		02E94225224E10AB000370CD /* ListeDepenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E94224224E10AB000370CD /* ListeDepenseViewController.swift */; };
 		02E94227224E1919000370CD /* DepenseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E94226224E1919000370CD /* DepenseViewCell.swift */; };
+		02E94229224E7B1D000370CD /* ModelVoyage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E94228224E7B1D000370CD /* ModelVoyage.swift */; };
+		02E9422B224E83B9000370CD /* VoyageCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9422A224E83B9000370CD /* VoyageCD.swift */; };
+		02E9422D224E8420000370CD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9422C224E8420000370CD /* CoreDataManager.swift */; };
 		02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */; };
 		02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */; };
 		02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */; };
@@ -49,6 +52,9 @@
 		02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreDepenseViewCell.swift; sourceTree = "<group>"; };
 		02E94224224E10AB000370CD /* ListeDepenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeDepenseViewController.swift; sourceTree = "<group>"; };
 		02E94226224E1919000370CD /* DepenseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepenseViewCell.swift; sourceTree = "<group>"; };
+		02E94228224E7B1D000370CD /* ModelVoyage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVoyage.swift; sourceTree = "<group>"; };
+		02E9422A224E83B9000370CD /* VoyageCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageCD.swift; sourceTree = "<group>"; };
+		02E9422C224E8420000370CD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVoyageViewController.swift; sourceTree = "<group>"; };
 		02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVoyageViewController.swift; sourceTree = "<group>"; };
 		02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 		0266D3AF2247A0EC0018EC7B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				02E94228224E7B1D000370CD /* ModelVoyage.swift */,
+				02E9422A224E83B9000370CD /* VoyageCD.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 				0266D3AF2247A0EC0018EC7B /* Model */,
 				0266D3AE2247A0E00018EC7B /* Controller */,
 				0BAF8D2C2244006A002C3C8F /* AppDelegate.swift */,
+				02E9422C224E8420000370CD /* CoreDataManager.swift */,
 				0BAF8D302244006A002C3C8F /* Main.storyboard */,
 				0BAF8D362244006D002C3C8F /* Assets.xcassets */,
 				0BAF8D382244006D002C3C8F /* LaunchScreen.storyboard */,
@@ -315,8 +324,11 @@
 				02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */,
 				02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */,
 				02E94225224E10AB000370CD /* ListeDepenseViewController.swift in Sources */,
+				02E94229224E7B1D000370CD /* ModelVoyage.swift in Sources */,
 				02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */,
 				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
+				02E9422B224E83B9000370CD /* VoyageCD.swift in Sources */,
+				02E9422D224E8420000370CD /* CoreDataManager.swift in Sources */,
 				0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
