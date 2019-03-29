@@ -11,6 +11,8 @@
 		0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */; };
 		02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE96E2224A4640009EADCF /* NewDepenseViewController.swift */; };
 		02BE96E5224A7DF7009EADCF /* MembreDepenseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */; };
+		02E94225224E10AB000370CD /* ListeDepenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E94224224E10AB000370CD /* ListeDepenseViewController.swift */; };
+		02E94227224E1919000370CD /* DepenseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E94226224E1919000370CD /* DepenseViewCell.swift */; };
 		02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */; };
 		02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */; };
 		02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */; };
@@ -45,6 +47,8 @@
 		0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageTableViewCell.swift; sourceTree = "<group>"; };
 		02BE96E2224A4640009EADCF /* NewDepenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDepenseViewController.swift; sourceTree = "<group>"; };
 		02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreDepenseViewCell.swift; sourceTree = "<group>"; };
+		02E94224224E10AB000370CD /* ListeDepenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeDepenseViewController.swift; sourceTree = "<group>"; };
+		02E94226224E1919000370CD /* DepenseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepenseViewCell.swift; sourceTree = "<group>"; };
 		02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVoyageViewController.swift; sourceTree = "<group>"; };
 		02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVoyageViewController.swift; sourceTree = "<group>"; };
 		02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 				02EE1DD62247CF6000645168 /* NewVoyageViewController.swift */,
 				02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */,
 				02BE96E2224A4640009EADCF /* NewDepenseViewController.swift */,
+				02E94224224E10AB000370CD /* ListeDepenseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				0266D3B52247A4D80018EC7B /* VoyageTableViewCell.swift */,
 				02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */,
 				02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */,
+				02E94226224E1919000370CD /* DepenseViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,11 +308,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BAF8D352244006A002C3C8F /* TripManager.xcdatamodeld in Sources */,
+				02E94227224E1919000370CD /* DepenseViewCell.swift in Sources */,
 				02BE96E5224A7DF7009EADCF /* MembreDepenseViewCell.swift in Sources */,
 				0266D3B22247A2360018EC7B /* ListeVoyageViewController.swift in Sources */,
 				0BAF8D2D2244006A002C3C8F /* AppDelegate.swift in Sources */,
 				02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */,
 				02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */,
+				02E94225224E10AB000370CD /* ListeDepenseViewController.swift in Sources */,
 				02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */,
 				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
 				0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */,

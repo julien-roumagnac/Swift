@@ -25,8 +25,7 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         let appD = UIApplication.shared.delegate as? AppDelegate
         let context = appD!.persistentContainer.viewContext
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Membres.nom),ascending:false)]//
-        let destinationNom = voyage!.nom! ?? ""
-        print(destinationNom)
+        let destinationNom = voyage!.nom! 
         request.predicate = NSPredicate(format: "destination.nom = %@", destinationNom)
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
@@ -54,10 +53,11 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "membreDepCell", for: indexPath) as! MembreDepenseViewCell
-        print(cell)
         let membre = self.membresFetched.object(at: indexPath)
         cell.nom?.text = String((membre.nom?.prefix(1))!)
         cell.prenom?.text = membre.prenom
+        cell.montantDu?.text = "0"
+        cell.montantPaye?.text = "0"
         return cell
     }
     
@@ -91,27 +91,46 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
     
     @IBAction func saveAction(_ sender: Any) {
         let montant : String = nomNewDepense.text ?? ""
-        let photo : UIImage? = nil
+        //let photo : UIImage? = nil
+        let date : String = dateNewDepense!.date.description
         guard (montant != "") else {return }
         guard let appD = UIApplication.shared.delegate as? AppDelegate else{
             print("error")
             return
         }
         let context = appD.persistentContainer.viewContext
+        //DEPENSE
         let depense = Depense(context: context)
-        //depense.montant = Double(nomNewDepense)!
-        //depense.photo = nil
-        
-        //depense.addToParticipants(<#T##value: Paiement##Paiement#>)
-        /*depense.montant = nom
-        depense = date.description
-        voyage.photo = nil
-        for membre in membres {
-            voyage.addToVoyageurs(membre)
-            membre.destination = voyage
-        }*/
+        depense.dateDepense = date
+        depense.montant = Double(montant)!
+        depense.photo = nil
+        //PAIEMENT
+        let cells = self.tableMembresDepense.visibleCells as! [MembreDepenseViewCell]
+        for cell in cells {
+            if cell.estConcerne.isOn {
+                let newPaiement = Paiement(context: context)
+                let nomPayeur = cell.nom.text
+                let prenomPayeur = cell.prenom.text
+                //trouver le membre
+                let m = self.findMembre(nom: nomPayeur!, prenom: prenomPayeur!)
+                guard m != nil else {print("probleme"); return}
+                newPaiement.montantDu = (NumberFormatter().number(from: cell.montantDu!.text!)?.doubleValue)!
+                newPaiement.montantPaye = (NumberFormatter().number(from: cell.montantPaye!.text!)?.doubleValue)!
+                newPaiement.payeur = m
+                depense.addToParticipants(newPaiement)
+            }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
+    func findMembre(nom: String, prenom: String) -> Membres?{
+        let membres = self.membresFetched.fetchedObjects
+        for membre in membres! {
+            if (nom == String((membre.nom?.prefix(1))!) && prenom == membre.prenom){
+                return membre
+            }
+        }
+        return nil
+    }
     
 }

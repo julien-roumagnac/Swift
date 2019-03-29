@@ -24,6 +24,10 @@ class DetailVoyageViewController: UIViewController {
             if let newDepenseController = segue.destination as? NewDepenseViewController {
                 newDepenseController.voyage = voyage
             }
+            if let listeDepenseController = segue.destination as? ListeDepenseViewController {
+                listeDepenseController.voyage = voyage
+            }
+        
         }
     }
 }

@@ -4,7 +4,7 @@
         <attribute name="dateDepense" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="montant" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="participants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Paiement" inverseName="objetif" inverseEntity="Paiement" syncable="YES"/>
+        <relationship name="participants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Paiement" inverseName="objectif" inverseEntity="Paiement" syncable="YES"/>
     </entity>
     <entity name="Membres" representedClassName="Membres" syncable="YES" codeGenerationType="class">
         <attribute name="dateArrivee" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +18,7 @@
     <entity name="Paiement" representedClassName="Paiement" syncable="YES" codeGenerationType="class">
         <attribute name="montantDu" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="montantPaye" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="objetif" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Depense" inverseName="participants" inverseEntity="Depense" syncable="YES"/>
+        <relationship name="objectif" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Depense" inverseName="participants" inverseEntity="Depense" syncable="YES"/>
         <relationship name="payeur" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Membres" inverseName="frais" inverseEntity="Membres" syncable="YES"/>
     </entity>
     <entity name="Voyage" representedClassName="Voyage" syncable="YES" codeGenerationType="class">

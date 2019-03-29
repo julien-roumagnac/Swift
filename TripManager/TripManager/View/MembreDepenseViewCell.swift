@@ -14,4 +14,11 @@ class MembreDepenseViewCell: UITableViewCell{
     @IBOutlet weak var nom: UILabel!
     
     @IBOutlet weak var prenom: UILabel!
+    
+    
+    @IBOutlet weak var montantDu: UITextField!
+    
+    @IBOutlet weak var montantPaye: UITextField!
+    @IBOutlet weak var estConcerne: UISwitch!
+    
 }
