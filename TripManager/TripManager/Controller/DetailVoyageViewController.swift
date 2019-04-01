@@ -77,8 +77,8 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.detteTable.dequeueReusableCell(withIdentifier: "detteCell", for: indexPath) as! DetteTableViewCell
-        cell.creanciéLabel.text = remboursements[indexPath.row].creancié.nom
-        cell.endettéLabel.text = remboursements[indexPath.row].endetté.nom
+        cell.creanciéLabel.text = remboursements[indexPath.row].creancié.prenom
+        cell.endettéLabel.text = remboursements[indexPath.row].endetté.prenom
         cell.montantLabel.text = remboursements[indexPath.row].montant.description + " €"
         return cell
     }
