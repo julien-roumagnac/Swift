@@ -119,6 +119,8 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
                 newPaiement.montantDu = (NumberFormatter().number(from: cell.montantDu!.text!)?.doubleValue)!
                 newPaiement.montantPaye = (NumberFormatter().number(from: cell.montantPaye!.text!)?.doubleValue)!
                 depense.addToParticipants(newPaiement)
+                m?.dette += newPaiement.montantDu - newPaiement.montantPaye
+                
             }
         }
         self.dismiss(animated: true, completion: nil)

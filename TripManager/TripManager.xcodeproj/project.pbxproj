@@ -26,6 +26,8 @@
 		0BAF8D3A2244006D002C3C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF8D382244006D002C3C8F /* LaunchScreen.storyboard */; };
 		0BAF8D452244006E002C3C8F /* TripManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D442244006E002C3C8F /* TripManagerTests.swift */; };
 		0BAF8D502244006E002C3C8F /* TripManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D4F2244006E002C3C8F /* TripManagerUITests.swift */; };
+		604ED4E822525B500061C7F4 /* BilanGeneralModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604ED4E722525B500061C7F4 /* BilanGeneralModelView.swift */; };
+		604ED4EA22525DCC0061C7F4 /* DetteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604ED4E922525DCC0061C7F4 /* DetteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		0BAF8D4B2244006E002C3C8F /* TripManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF8D4F2244006E002C3C8F /* TripManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripManagerUITests.swift; sourceTree = "<group>"; };
 		0BAF8D512244006E002C3C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		604ED4E722525B500061C7F4 /* BilanGeneralModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilanGeneralModelView.swift; sourceTree = "<group>"; };
+		604ED4E922525DCC0061C7F4 /* DetteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			children = (
 				02E94228224E7B1D000370CD /* ModelVoyage.swift */,
 				02E9422A224E83B9000370CD /* VoyageCD.swift */,
+				604ED4E722525B500061C7F4 /* BilanGeneralModelView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 				02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */,
 				02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */,
 				02E94226224E1919000370CD /* DepenseViewCell.swift */,
+				604ED4E922525DCC0061C7F4 /* DetteTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 				02E94227224E1919000370CD /* DepenseViewCell.swift in Sources */,
 				02BE96E5224A7DF7009EADCF /* MembreDepenseViewCell.swift in Sources */,
 				0266D3B22247A2360018EC7B /* ListeVoyageViewController.swift in Sources */,
+				604ED4E822525B500061C7F4 /* BilanGeneralModelView.swift in Sources */,
 				0BAF8D2D2244006A002C3C8F /* AppDelegate.swift in Sources */,
 				02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */,
 				02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */,
@@ -327,6 +334,7 @@
 				02E94229224E7B1D000370CD /* ModelVoyage.swift in Sources */,
 				02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */,
 				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
+				604ED4EA22525DCC0061C7F4 /* DetteTableViewCell.swift in Sources */,
 				02E9422B224E83B9000370CD /* VoyageCD.swift in Sources */,
 				02E9422D224E8420000370CD /* CoreDataManager.swift in Sources */,
 				0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */,
