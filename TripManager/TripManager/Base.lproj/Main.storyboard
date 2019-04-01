@@ -698,7 +698,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xWE-1J-2bH">
-                                <rect key="frame" x="10" y="198" width="355" height="394"/>
+                                <rect key="frame" x="10" y="198" width="355" height="345"/>
                                 <color key="backgroundColor" red="0.58431372549019611" green="0.72941176470588232" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detteCell" id="lZk-Xp-ODw" customClass="DetteTableViewCell" customModule="TripManager" customModuleProvider="target">
@@ -735,9 +735,12 @@
                                                     <state key="normal" image="arrow"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfq-wf-Mbd">
-                                                    <rect key="frame" x="319" y="3" width="36" height="36"/>
+                                                    <rect key="frame" x="304" y="3" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="caseàcocher"/>
+                                                    <connections>
+                                                        <action selector="dettePayée:" destination="MHs-b4-qIu" eventType="touchUpInside" id="Gt2-k5-h7H"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -765,7 +768,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQY-SK-Ia6">
-                                <rect key="frame" x="99" y="607" width="89" height="30"/>
+                                <rect key="frame" x="99" y="558" width="89" height="30"/>
                                 <color key="backgroundColor" red="0.89630550146102905" green="0.71662867583592993" blue="0.57922875035791288" alpha="0.33775881901840493" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="8C2-di-PTZ"/>
@@ -787,7 +790,7 @@
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHe-Yk-ZKU">
-                                <rect key="frame" x="203" y="607" width="30" height="30"/>
+                                <rect key="frame" x="203" y="558" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Fxv-4o-9TN"/>
                                     <constraint firstAttribute="width" constant="30" id="Tjb-dC-h2j"/>
@@ -812,6 +815,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2b-bJ-3N5">
+                                <rect key="frame" x="265" y="558" width="65" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Membres"/>
+                                <connections>
+                                    <segue destination="8FW-7K-WhK" kind="show" id="WpA-u0-VKy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.58431372549019611" green="0.72941176470588232" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -823,13 +834,16 @@
                             <constraint firstItem="xWE-1J-2bH" firstAttribute="leading" secondItem="cQn-aa-Jfx" secondAttribute="leading" constant="10" id="Cg5-4n-XP5"/>
                             <constraint firstItem="vdK-Ly-UhL" firstAttribute="leading" secondItem="cQn-aa-Jfx" secondAttribute="leading" constant="10" id="Kkr-N8-Eq2"/>
                             <constraint firstItem="MHe-Yk-ZKU" firstAttribute="top" secondItem="xWE-1J-2bH" secondAttribute="bottom" constant="15" id="SSx-s5-kE2"/>
+                            <constraint firstItem="cQn-aa-Jfx" firstAttribute="bottom" secondItem="K2b-bJ-3N5" secondAttribute="bottom" constant="30" id="Sv4-44-2EV"/>
                             <constraint firstItem="xWE-1J-2bH" firstAttribute="centerX" secondItem="aaY-fb-dpJ" secondAttribute="centerX" id="Wdm-Ab-p4z"/>
+                            <constraint firstItem="K2b-bJ-3N5" firstAttribute="top" secondItem="xWE-1J-2bH" secondAttribute="bottom" constant="15" id="Xep-1W-TTn"/>
                             <constraint firstItem="MHe-Yk-ZKU" firstAttribute="leading" secondItem="lQY-SK-Ia6" secondAttribute="trailing" constant="15" id="YfA-Ln-5QA"/>
                             <constraint firstItem="cQn-aa-Jfx" firstAttribute="bottom" secondItem="xWE-1J-2bH" secondAttribute="bottom" constant="75" id="cTh-gd-Klb"/>
                             <constraint firstItem="cQn-aa-Jfx" firstAttribute="trailing" secondItem="xWE-1J-2bH" secondAttribute="trailing" constant="10" id="dlf-QW-ZFl"/>
                             <constraint firstItem="lQY-SK-Ia6" firstAttribute="leading" secondItem="cQn-aa-Jfx" secondAttribute="leading" constant="99" id="glE-fh-0zb"/>
                             <constraint firstItem="vT9-xc-hYz" firstAttribute="centerX" secondItem="aaY-fb-dpJ" secondAttribute="centerX" id="iM6-kQ-nyO"/>
                             <constraint firstItem="cQn-aa-Jfx" firstAttribute="trailing" secondItem="i6Y-4r-FuA" secondAttribute="trailing" constant="10" id="isl-oo-WPf"/>
+                            <constraint firstItem="K2b-bJ-3N5" firstAttribute="leading" secondItem="MHe-Yk-ZKU" secondAttribute="trailing" constant="32" id="jij-rh-1qF"/>
                             <constraint firstItem="xWE-1J-2bH" firstAttribute="top" secondItem="i6Y-4r-FuA" secondAttribute="bottom" constant="20" id="pyY-Hj-HEd"/>
                             <constraint firstItem="vT9-xc-hYz" firstAttribute="top" secondItem="cQn-aa-Jfx" secondAttribute="top" constant="20" id="yQh-1r-tD9"/>
                         </constraints>
@@ -1154,7 +1168,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6BX-VH-dfh">
-                                <rect key="frame" x="16" y="204" width="343" height="389"/>
+                                <rect key="frame" x="16" y="204" width="343" height="340"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="depenseCell" id="hqo-PT-IPh" customClass="DepenseViewCell" customModule="TripManager" customModuleProvider="target">
@@ -1261,7 +1275,8 @@
         <image name="caseàcocher" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9od-UA-PXG"/>
+        <segue reference="WpA-u0-VKy"/>
+        <segue reference="6zt-E1-Pof"/>
         <segue reference="lNJ-h5-ufk"/>
     </inferredMetricsTieBreakers>
 </document>

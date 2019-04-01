@@ -13,6 +13,7 @@ import CoreData
 class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, NSFetchedResultsControllerDelegate{
    
     
+    
     var voyage : Voyage?
     var remboursements : [Dette] = []
     
@@ -56,6 +57,19 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
             }
         
         }
+    }
+    
+    @IBAction func dettePayée(_ sender: UIButton) {
+        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: self.detteTable)
+        let indexPath = self.detteTable.indexPathForRow(at: buttonPosition)
+        self.deleteRemboursement(at: indexPath!.row)
+        detteTable.reloadData()
+        
+    }
+    func deleteRemboursement(at: Int){
+        remboursements[at].creancié.dette += remboursements[at].montant
+        remboursements[at].endetté.dette -= remboursements[at].montant
+        remboursements.remove(at: at)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.remboursements.count
