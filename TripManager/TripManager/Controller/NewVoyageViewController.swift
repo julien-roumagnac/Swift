@@ -107,6 +107,5 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         }
         let context = appD.persistentContainer.viewContext
         context.delete(m)
-        
     }
 }

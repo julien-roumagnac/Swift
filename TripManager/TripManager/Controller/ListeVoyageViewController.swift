@@ -10,32 +10,22 @@ import Foundation
 import UIKit
 import CoreData
 
-class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class ListeVoyageViewController: UIViewController{
     
-    var voyages : [Voyage] = []
-    var modelVoyage : ModelVoyage?
-
+    //var voyages : [Voyage] = []
+    //var modelVoyage : ModelVoyage?
+    var tableViewController: VoyageTableViewController!
     @IBOutlet weak var voyageTable : UITableView!
     
-
-    
-//    fileprivate lazy var voyageFetched : NSFetchedResultsController<Voyage> = {
-//        //prepare a requet
-//        let request : NSFetchRequest<Voyage> = Voyage.fetchRequest()
-//        let appD = UIApplication.shared.delegate as? AppDelegate
-//        let context = appD!.persistentContainer.viewContext
-//        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Voyage.dateDebut),ascending:false)]
-//        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-//        fetchResultController.delegate = self
-//        return fetchResultController
-//    }()
-    
     override func viewDidLoad() {
+        print("toto1")
         super.viewDidLoad()
-        self.modelVoyage = ModelVoyage(table: voyageTable)
-        self.getFetch()
+        // Do any additional setup after loading the view, typically from a nib.
+        print("toto2")
+        self.tableViewController = VoyageTableViewController(tableView: self.voyageTable)
     }
     
+    /*
     func getFetch(){
         do{
             try self.modelVoyage!.getVoyageFetch().performFetch()
@@ -43,11 +33,11 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
         catch let error as NSError{
             print("error")
         }
-    }
+    }*/
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    /*
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.getFetch()
         guard let section = self.modelVoyage?.getVoyageFetch().sections?[section] else {
@@ -86,7 +76,7 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    
+    */
     
     /*@IBAction func unwindToNewVoyage(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
@@ -99,11 +89,11 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
     }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.getFetch()
+        let v = self.tableViewController.fetchResultController.voyageFetched
         if (sender as? VoyageTableViewCell) != nil {
             if let detailVoyageController = segue.destination as? DetailVoyageViewController {
                 if let index = self.voyageTable.indexPathForSelectedRow{
-                    detailVoyageController.voyage = self.modelVoyage?.getVoyageFetch().object(at: index)
+                    detailVoyageController.voyage = v.object(at: index)
                     self.voyageTable.deselectRow(at: index, animated: true)
                 }
             }
@@ -131,7 +121,7 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
             return
         }
     }*/
-    
+    /*
     func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
         self.getFetch()
         let voyage = self.modelVoyage?.getVoyageFetch().object(at: indexPath)
@@ -165,5 +155,5 @@ class ListeVoyageViewController: UIViewController, UITableViewDataSource, UITabl
         }
         return appD.persistentContainer.viewContext
     }
-    
+    */
 }

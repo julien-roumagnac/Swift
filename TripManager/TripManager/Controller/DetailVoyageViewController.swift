@@ -55,7 +55,9 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
             if let listeDepenseController = segue.destination as? ListeDepenseViewController {
                 listeDepenseController.voyage = voyage
             }
-        
+            if let membreController = segue.destination as? ViewControllerListeMembre {
+                membreController.voyage = voyage
+            }
         }
     }
     

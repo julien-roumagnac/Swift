@@ -5,7 +5,7 @@
 //  Created by Audrey Samson on 29/03/2019.
 //  Copyright © 2019 Julien Roumagnac. All rights reserved.
 //
-
+/*
 import Foundation
 import CoreData
 import UIKit
@@ -71,5 +71,5 @@ class ModelVoyage: NSObject, NSFetchedResultsControllerDelegate {
             return nil
         }
         return appD.persistentContainer.viewContext
-    }
-}
+    }*/
+
