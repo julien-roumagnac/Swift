@@ -1,5 +1,5 @@
 //
-//  VoyageTableViewController.swift
+//  MembreViewController.swift
 //  TripManager
 //
 //  Created by Audrey Samson on 01/04/2019.
@@ -8,20 +8,21 @@
 
 import UIKit
 
-class VoyageTableViewController : NSObject, UITableViewDataSource, VoyageSetViewModelDelegate{
+class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewDataSource, MembreSetViewModelDelegate {
     var tableView   : UITableView
-    var voyageViewModel : VoyageSetViewModel
-    let fetchResultController : VoyageFetchResultController
-    
-    init(tableView: UITableView) {
+    var membresViewModel : MembreSetViewModel
+    let fetchResultController : MembreFetchResultController
+   
+    init(tableView: UITableView, voyage : Voyage) {
         self.tableView        = tableView
-        self.fetchResultController = VoyageFetchResultController(view : tableView)
-        self.voyageViewModel = VoyageSetViewModel(data : self.fetchResultController.voyageFetched)
+        self.fetchResultController = MembreFetchResultController(view : tableView, voyage: voyage)
+        self.membresViewModel = MembreSetViewModel(data : self.fetchResultController.membreFetched)
         super.init()
         self.tableView.dataSource      = self
-        self.voyageViewModel.delegate = self
+        self.membresViewModel.delegate = self
+        self.tableView.delegate = self
+
     }
-    
     //-------------------------------------------------------------------------------------------------
     // MARK: - TableView DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,50 +31,60 @@ class VoyageTableViewController : NSObject, UITableViewDataSource, VoyageSetView
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.voyageViewModel.count
+        return self.membresViewModel.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VoyageCellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MembreCellId", for: indexPath)
         // Configure the cell...
         return configure(cell: cell, atIndexPath: indexPath)
     }
     //-------------------------------------------------------------------------------------------------
-    // MARK: - VoyageSetViewModelDelegate
+    // MARK: - PersonSetViewModelDelegate
     //-------------------------------------------------------------------------------------------------
-    // MARK: - VoyageSetViewModelDelegate
+    // MARK: - PersonSetViewModelDelegate
     /// called when set globally changes
     func dataSetChanged(){
         self.tableView.reloadData()
     }
-    /// called when a Voyage is deleted from set
+    /// called when a Person is deleted from set
     ///
     /// - Parameter indexPath: (section,row) of deletion
-    func voyageDeleted(at indexPath: IndexPath){
+    func membreDeleted(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
-    /// called when a Voyage is updated in set
+    /// called when a Person is updated in set
     ///
     /// - Parameter indexPath: (section, row) of updating
-    func voyageUpdated(at indexPath: IndexPath){
+    func membreUpdated(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
-    /// called when a Voyage is added to set
+    /// called when a Person is added to set
     ///
     /// - Parameter indexPath: (section,row) of add
-    func voyageAdded(at indexPath: IndexPath){
+    func membreAdded(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
+    }
+    
+    func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
+        let membre = self.fetchResultController.membreFetched.object(at: indexPath)
+        CoreDataManager.context.delete(membre)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "Delete", handler: self.deleteHandlerAction)
+        return [delete]
     }
     //-------------------------------------------------------------------------------------------------
     // MARK: - convenience methods
     @discardableResult
     private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) -> UITableViewCell{
-        if let voyage = self.voyageViewModel.get(voyageAt: indexPath.row){
-            if let cel = cell as? VoyageTableViewCell {
-                cel.nomVoyage.text = voyage.nom
-                cel.dateVoyage.text = voyage.dateDebut
+        if let membre = self.membresViewModel.get(membreAt: indexPath.row){
+            if let cel = cell as? MembrePresenterCell {
+                cel.nomMembre.text = String((membre.nom!.prefix(1)))
+                cel.prenomMembre.text = membre.prenom
+                cel.dateArriveeMembre.text = membre.dateArrivee
+                cel.totalDepenseMembre.text = "000"
             }
         }
-        return cell
-        
-    }
+        return cell }
 }

@@ -26,11 +26,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         let nom : String = nomNewVoyage.text ?? ""
         let date : Date = dateVoyage.date
         guard (nom != "") else {return }
-        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
-            print("error")
-            return
-        }
-        let context = appD.persistentContainer.viewContext
+        let context = CoreDataManager.context
         let voyage = Voyage(context: context)
         voyage.nom = nom
         voyage.dateDebut = date.description
@@ -67,6 +63,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         textField.resignFirstResponder()
         return true
     }
+    
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -84,11 +81,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     }
     
     func newMembre(nom: String, prenom: String, date: Date){
-        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
-            print("error")
-            return
-        }
-        let context = appD.persistentContainer.viewContext
+        let context = CoreDataManager.context
         let m = Membres(context: context)
         m.nom = nom
         m.prenom = prenom
@@ -101,11 +94,6 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     func deleteNewMembre(at: Int){
         let m = membres[at]
         self.membres.remove(at: at)
-        guard let appD = UIApplication.shared.delegate as? AppDelegate else{
-            print("error")
-            return
-        }
-        let context = appD.persistentContainer.viewContext
-        context.delete(m)
+        CoreDataManager.context.delete(m)
     }
 }
