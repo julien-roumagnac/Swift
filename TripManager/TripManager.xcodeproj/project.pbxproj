@@ -39,6 +39,7 @@
 		0BAF8D502244006E002C3C8F /* TripManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D4F2244006E002C3C8F /* TripManagerUITests.swift */; };
 		604ED4E822525B500061C7F4 /* BilanGeneralModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604ED4E722525B500061C7F4 /* BilanGeneralModelView.swift */; };
 		604ED4EA22525DCC0061C7F4 /* DetteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604ED4E922525DCC0061C7F4 /* DetteTableViewCell.swift */; };
+		60626FCA2253C1C200E9707C /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60626FC92253C1C200E9707C /* BalanceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		0BAF8D512244006E002C3C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		604ED4E722525B500061C7F4 /* BilanGeneralModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilanGeneralModelView.swift; sourceTree = "<group>"; };
 		604ED4E922525DCC0061C7F4 /* DetteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetteTableViewCell.swift; sourceTree = "<group>"; };
+		60626FC92253C1C200E9707C /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				02E94226224E1919000370CD /* DepenseViewCell.swift */,
 				02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */,
 				02E942442252AD26000370CD /* MembrePresenterCell.swift */,
+				60626FC92253C1C200E9707C /* BalanceTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
 				604ED4EA22525DCC0061C7F4 /* DetteTableViewCell.swift in Sources */,
 				02E9423322529CE5000370CD /* MembreCoreData.swift in Sources */,
+				60626FCA2253C1C200E9707C /* BalanceTableViewCell.swift in Sources */,
 				0266D3B62247A4D80018EC7B /* VoyageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

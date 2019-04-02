@@ -13,6 +13,7 @@ import CoreData
 class BilanGeneralViewModel {
     
     var bilan: [Dette] = []
+    var maxDette : Double = 0
     
     
     init(membres: [Membres]){
@@ -23,10 +24,8 @@ class BilanGeneralViewModel {
             dette.endetté.dette += dette.montant
             
         }
-        for membre in membres {
-            print(membre.nom ?? "", "a une dette de " , membre.dette.description)
-        }
         
+        maxDette = self.getMaxDette()
     }
     
     
@@ -171,6 +170,15 @@ class BilanGeneralViewModel {
         cr2.remove(at: PGC)
         return (cr2,en2,d2)
     }
+    func getMaxDette() -> Double {
+        var res : Double = 0
+        for dette in bilan {
+            if abs(dette.montant) > res {
+                res = dette.montant
+            }
+        }
+        return res
+    }
 }
 
 
@@ -193,6 +201,7 @@ class Dette {
         
         return res
     }
+ 
     
     
 }

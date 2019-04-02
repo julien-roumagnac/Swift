@@ -16,8 +16,11 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
     
     var voyage : Voyage?
     var remboursements : [Dette] = []
+    var voyageMembres : [Membres] = []
+    var maxDette : Double = 0
     
     @IBOutlet weak var detteTable: UITableView!
+    @IBOutlet weak var balanceTable: UITableView!
     @IBOutlet weak var titreBilan: UILabel!
     
      fileprivate lazy var membresFetched : NSFetchedResultsController<Membres> = {
@@ -33,6 +36,7 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
        }()
     
     override func viewDidLoad() {
+        
         titreBilan.text = self.voyage?.nom
         do{
             try self.membresFetched.performFetch()
@@ -41,9 +45,15 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
             print("error")
         }
         var membres = membresFetched.fetchedObjects!
-        //membres[0].dette = -10
-        //membres[1].dette = 10
-        remboursements = BilanGeneralViewModel(membres:membres).bilan
+        print("error1")
+        self.voyageMembres = membres
+        print("error2")
+        var bilanGVM : BilanGeneralViewModel = BilanGeneralViewModel(membres:membres)
+        print("error3")
+        remboursements = bilanGVM.bilan
+        print("error4")
+        maxDette = bilanGVM.maxDette
+        print("error5")
         
     }
     
@@ -74,15 +84,57 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
         remboursements.remove(at: at)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.remboursements.count
+        
+        if tableView == self.detteTable{
+            return self.remboursements.count
+            
+        }else {
+            return self.voyageMembres.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.detteTable.dequeueReusableCell(withIdentifier: "detteCell", for: indexPath) as! DetteTableViewCell
+        if tableView == self.detteTable
+        {  let cell = self.detteTable.dequeueReusableCell(withIdentifier: "detteCell", for: indexPath) as! DetteTableViewCell
         cell.creanciéLabel.text = remboursements[indexPath.row].creancié.prenom
         cell.endettéLabel.text = remboursements[indexPath.row].endetté.prenom
         cell.montantLabel.text = remboursements[indexPath.row].montant.description + " €"
-        return cell
+            return cell }
+        else {
+            let cell = self.balanceTable.dequeueReusableCell(withIdentifier: "balanceCell", for: indexPath) as! BalanceTableViewCell
+            var val : Double = 0
+            if self.maxDette == Double(0) {
+                val = 0
+            }else {
+                val = (voyageMembres[indexPath.row].dette  / self.maxDette) * 200
+            }
+            
+            cell.montantLabel.text = voyageMembres[indexPath.row].dette.description
+            cell.nomLabel.text = voyageMembres[indexPath.row].prenom
+            print(voyageMembres[indexPath.row].prenom,"val : " , val)
+            var size = CGSize(width: val, height: 25)
+            cell.CouleurLabel.bounds.size = size
+            
+            if val > 0 {
+                cell.CouleurLabel.backgroundColor = UIColor.red
+    
+                
+            }
+            else {
+                cell.CouleurLabel.backgroundColor = UIColor.green
+                
+                
+            }
+            
+            
+            
+            return cell
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewDidLoad()
+        self.detteTable.reloadData()
+        self.balanceTable.reloadData()
     }
     
     
