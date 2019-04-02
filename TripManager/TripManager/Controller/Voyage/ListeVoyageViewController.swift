@@ -18,10 +18,8 @@ class ListeVoyageViewController: UIViewController{
     @IBOutlet weak var voyageTable : UITableView!
     
     override func viewDidLoad() {
-        print("toto1")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("toto2")
         self.tableViewController = VoyageTableViewController(tableView: self.voyageTable)
     }
     
@@ -37,6 +35,7 @@ class ListeVoyageViewController: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     /*
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.getFetch()

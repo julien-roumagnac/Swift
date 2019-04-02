@@ -19,6 +19,11 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var dateNewDepense : UIDatePicker!
     @IBOutlet weak var tableMembresDepense : UITableView!
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     fileprivate lazy var membresFetched : NSFetchedResultsController<Membres> = {
         //prepare a requet
         let request : NSFetchRequest<Membres> = Membres.fetchRequest()
