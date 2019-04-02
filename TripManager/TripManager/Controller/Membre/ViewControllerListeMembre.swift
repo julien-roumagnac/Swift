@@ -78,7 +78,7 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let m = self.tableViewController.fetchResultController.membreFetched
-        if (sender as? MembreTableViewCell) != nil {
+        if (sender as? MembrePresenterCell) != nil {
             if let detailMembreController = segue.destination as? BilanPersoViewController {
                 if let index = self.tableView.indexPathForSelectedRow{
                     detailMembreController.membre = m.object(at: index)
