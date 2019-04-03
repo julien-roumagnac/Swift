@@ -90,6 +90,7 @@ class VoyageTableViewController : NSObject, UITableViewDelegate, UITableViewData
 //                let date : String = dateFormatterPrint.string(from: voyage.dateDebut!)
                 cel.nomVoyage.text = voyage.nom
                 cel.dateVoyage.text = voyage.dateDebut!
+                cel.imageVoyage.image = UIImage(data: voyage.photo! )
             }
         }
         return cell

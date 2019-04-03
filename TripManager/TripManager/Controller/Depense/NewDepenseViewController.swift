@@ -106,7 +106,7 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         let depense = Depense(context: context)
         depense.dateDepense = date
         depense.montant = Double(montant)!
-        depense.photo = nil
+        depense.photo = (self.photoNewDepense.image ?? UIImage(named: "placeholder")!).pngData()
         //PAIEMENT
         let cells = self.tableMembresDepense.visibleCells as! [MembreDepenseViewCell]
         for cell in cells {
@@ -138,6 +138,46 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
             }
         }
         return nil
+    }
+    //MARK - Photo Manager
+    
+    @IBAction func displayActionSheet(_ sender: Any) {
+        let alert = UIAlertController(title: "Update your photo", message: "Please select an option", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Take a new photo", style: .default , handler:{ (UIAlertAction)in
+            self.presentUIImagePicker(sourceType: .camera)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Choose from Library", style: .default , handler:{ (UIAlertAction)in
+            self.presentUIImagePicker(sourceType: .photoLibrary)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    
+    private func presentUIImagePicker(sourceType: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        present(picker, animated: true, completion: nil)
+    }
+    
+    
+}
+extension NewDepenseViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) -> UIImage {
+        guard let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage else {
+            dismiss(animated: true, completion: nil)
+            return UIImage(named: "placeholder")!
+        }
+        dismiss(animated: true, completion: nil)
+        self.photoNewDepense.image = chosenImage
+        return chosenImage
     }
     
 }

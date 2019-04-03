@@ -26,6 +26,8 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.voyage = CurrentTrip.sharedInstance
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.tableViewController = MembreTableViewController(tableView: self.tableView, voyage: voyage!)
     }

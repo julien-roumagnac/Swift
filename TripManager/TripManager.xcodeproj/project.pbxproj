@@ -48,6 +48,7 @@
 		0BAF8D502244006E002C3C8F /* TripManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D4F2244006E002C3C8F /* TripManagerUITests.swift */; };
 		604ED4E822525B500061C7F4 /* BilanGeneralModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604ED4E722525B500061C7F4 /* BilanGeneralModelView.swift */; };
 		604ED4EA22525DCC0061C7F4 /* DetteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604ED4E922525DCC0061C7F4 /* DetteTableViewCell.swift */; };
+		605DC15C2255120A0085B851 /* CurrentTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DC15B2255120A0085B851 /* CurrentTrip.swift */; };
 		60626FCA2253C1C200E9707C /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60626FC92253C1C200E9707C /* BalanceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		0BAF8D512244006E002C3C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		604ED4E722525B500061C7F4 /* BilanGeneralModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilanGeneralModelView.swift; sourceTree = "<group>"; };
 		604ED4E922525DCC0061C7F4 /* DetteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetteTableViewCell.swift; sourceTree = "<group>"; };
+		605DC15B2255120A0085B851 /* CurrentTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrip.swift; sourceTree = "<group>"; };
 		60626FC92253C1C200E9707C /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -296,6 +298,7 @@
 				0BAF8D382244006D002C3C8F /* LaunchScreen.storyboard */,
 				0BAF8D3B2244006D002C3C8F /* Info.plist */,
 				0BAF8D332244006A002C3C8F /* TripManager.xcdatamodeld */,
+				605DC15B2255120A0085B851 /* CurrentTrip.swift */,
 			);
 			path = TripManager;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				02F9AC4922540BFC002371E6 /* DepenseMembreViewController.swift in Sources */,
 				02E94229224E7B1D000370CD /* ModelVoyage.swift in Sources */,
 				02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */,
+				605DC15C2255120A0085B851 /* CurrentTrip.swift in Sources */,
 				02F9AC522254D761002371E6 /* DepenseFetchResultController.swift in Sources */,
 				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
 				604ED4EA22525DCC0061C7F4 /* DetteTableViewCell.swift in Sources */,

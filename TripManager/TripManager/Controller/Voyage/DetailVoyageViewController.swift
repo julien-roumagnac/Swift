@@ -37,7 +37,7 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
        }()
     
     override func viewDidLoad() {
-        
+        self.voyage = CurrentTrip.sharedInstance
         titreBilan.text = self.voyage?.nom
         self.imageVoyage.image = UIImage(data: (self.voyage?.photo!)!)!
         do{

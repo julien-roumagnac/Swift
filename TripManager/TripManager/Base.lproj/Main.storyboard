@@ -215,9 +215,9 @@
                                     <outlet property="delegate" destination="m1Q-b5-tGq" id="V7N-3a-yOP"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGy-Lt-vls">
-                                <rect key="frame" x="286" y="109" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGy-Lt-vls">
+                                <rect key="frame" x="286" y="109" width="36" height="36"/>
+                                <state key="normal" image="photo"/>
                                 <connections>
                                     <action selector="displayActionSheet:" destination="m1Q-b5-tGq" eventType="touchUpInside" id="WGi-Nz-edK"/>
                                 </connections>
@@ -463,6 +463,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pq-AE-hYn">
+                                <rect key="frame" x="306" y="141" width="36" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="photo"/>
+                                <connections>
+                                    <action selector="displayActionSheet:" destination="BzV-Za-6f8" eventType="touchUpInside" id="ifH-nT-2td"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.58431372549019611" green="0.72941176470588232" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -534,8 +542,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yE7-cz-bCm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="31/05/19" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5H-e9-eEo">
-                                                    <rect key="frame" x="208" y="10" width="120" height="24"/>
+                                                    <rect key="frame" x="208" y="10" width="135" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -549,13 +561,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.58431372549019611" green="0.72941176470588232" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.58431372549019611" green="0.72941176470588232" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="dateVoyage" destination="w5H-e9-eEo" id="FxO-IY-4ER"/>
+                                            <outlet property="imageVoyage" destination="yE7-cz-bCm" id="rgW-9t-l8I"/>
                                             <outlet property="nomVoyage" destination="a0w-gB-Gd7" id="Uml-UO-N9d"/>
-                                            <segue destination="MHs-b4-qIu" kind="show" id="9od-UA-PXG"/>
+                                            <segue destination="OVG-cR-tHD" kind="show" id="BiP-Kw-KfY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1177,7 +1189,7 @@
         <scene sceneID="JKz-WK-K4u">
             <objects>
                 <navigationController id="XhD-5a-bhY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bilan" id="7IO-ud-0kb"/>
+                    <tabBarItem key="tabBarItem" title="Bilan" image="argent35" id="7IO-ud-0kb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R9u-oL-pQS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1194,7 +1206,7 @@
         <scene sceneID="Iwr-t3-3xZ">
             <objects>
                 <navigationController id="n7X-aU-yzM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Membres" id="kge-fZ-kS1"/>
+                    <tabBarItem key="tabBarItem" title="Membres" image="people35" id="kge-fZ-kS1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="69j-2r-Gpo">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1216,7 +1228,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6BX-VH-dfh">
-                                <rect key="frame" x="16" y="204" width="343" height="389"/>
+                                <rect key="frame" x="16" y="204" width="343" height="340"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepenseCellId" id="hqo-PT-IPh" customClass="DepenseViewCell" customModule="TripManager" customModuleProvider="target">
@@ -1449,13 +1461,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="argent35" width="26.25" height="26.25"/>
         <image name="arrow" width="37.5" height="37.5"/>
         <image name="caseàcocher" width="36" height="36"/>
         <image name="new" width="37.5" height="37.5"/>
+        <image name="people35" width="157.5" height="157.5"/>
+        <image name="photo" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WpA-u0-VKy"/>
-        <segue reference="9od-UA-PXG"/>
-        <segue reference="LMW-M1-zbu"/>
+        <segue reference="lNJ-h5-ufk"/>
     </inferredMetricsTieBreakers>
 </document>

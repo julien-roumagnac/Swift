@@ -12,5 +12,6 @@ class VoyageTableViewCell: UITableViewCell {
 
     @IBOutlet var nomVoyage: UILabel!
     @IBOutlet var dateVoyage: UILabel!
-
+    @IBOutlet weak var imageVoyage: UIImageView!
+    
 }

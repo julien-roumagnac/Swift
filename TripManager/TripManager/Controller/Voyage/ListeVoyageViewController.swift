@@ -89,15 +89,21 @@ class ListeVoyageViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let v = self.tableViewController.fetchResultController.voyageFetched
-        if (sender as? VoyageTableViewCell) != nil {
-            if let detailVoyageController = segue.destination as? DetailVoyageViewController {
-                if let index = self.voyageTable.indexPathForSelectedRow{
-                    detailVoyageController.voyage = v.object(at: index)
-                    self.voyageTable.deselectRow(at: index, animated: true)
+        if let index = self.voyageTable.indexPathForSelectedRow{
+                       CurrentTrip.sharedInstance = v.object(at: index)
+                       self.voyageTable.deselectRow(at: index, animated: true)
                 }
-            }
+        
+        
+        //if (sender as? VoyageTableViewCell) != nil {
+        //    if let detailVoyageController = segue.destination as? DetailVoyageViewController {
+        //        if let index = self.voyageTable.indexPathForSelectedRow{
+        //            detailVoyageController.voyage = v.object(at: index)
+        //            self.voyageTable.deselectRow(at: index, animated: true)
+        //        }
+        //    }
         }
-    }
+    
     
     //plus utilisé
     /*
