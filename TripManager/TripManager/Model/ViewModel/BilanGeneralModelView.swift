@@ -179,6 +179,16 @@ class BilanGeneralViewModel {
         }
         return res
     }
+    
+    func bilanMembrePerso(membre: Membres)-> [Dette]{
+        var detteMembre: [Dette] = []
+        for dette in self.bilan{
+            if (dette.creancié == membre || dette.endetté == membre){
+                detteMembre.append(dette)
+            }
+        }
+        return detteMembre
+    }
 }
 
 
@@ -201,8 +211,10 @@ class Dette {
         
         return res
     }
+
+}
  
     
     
-}
+
 

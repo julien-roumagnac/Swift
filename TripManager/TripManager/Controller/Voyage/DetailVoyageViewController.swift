@@ -24,34 +24,19 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
     @IBOutlet weak var titreBilan: UILabel!
     @IBOutlet weak var imageVoyage: UIImageView!
     
-     fileprivate lazy var membresFetched : NSFetchedResultsController<Membres> = {
-           //prepare a requet
-        let request : NSFetchRequest<Membres> = Membres.fetchRequest()
-        let appD = UIApplication.shared.delegate as? AppDelegate
-        let context = appD!.persistentContainer.viewContext
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Membres.dette),ascending:false)]
-        request.predicate = NSPredicate(format: "destination = %@", voyage!)
-        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchResultController.delegate = self
-        return fetchResultController
-       }()
     
     override func viewDidLoad() {
         self.voyage = CurrentTrip.sharedInstance
         titreBilan.text = self.voyage?.nom
         self.imageVoyage.image = UIImage(data: (self.voyage?.photo!)!)!
-        do{
-            try self.membresFetched.performFetch()
-        }
-        catch let error as NSError{
-            print("error")
-        }
-        var membres = membresFetched.fetchedObjects!
-        self.voyageMembres = membres
-        var bilanGVM : BilanGeneralViewModel = BilanGeneralViewModel(membres:membres)
+
+        let membreFetch = MembreFetchResultController(view: balanceTable, voyage: voyage!)
+        let membres = membreFetch.membreFetched.fetchedObjects
+        
+        self.voyageMembres = membres ?? []
+        let bilanGVM : BilanGeneralViewModel = BilanGeneralViewModel(membres:voyageMembres)
         remboursements = bilanGVM.bilan
         maxDette = bilanGVM.maxDette
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

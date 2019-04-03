@@ -11,24 +11,55 @@ import UIKit
 
 class BilanPersoViewController: UIViewController {
     var membre : Membres?
+    var tableDepenseViewController: TableDepenseMembreViewController!
+    var tableBilanViewController: TableBilanViewController!
     
     @IBOutlet weak var nom : UILabel!
     @IBOutlet weak var depense : UILabel!
     @IBOutlet weak var messageDepart: UILabel!
     @IBOutlet weak var dateDepart: UILabel!
     
-    @IBOutlet weak var container : UIView!
-    
     @IBOutlet var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var balancePerso: UILabel!
     @IBOutlet weak var bouttonDelete : UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateArrivee: UILabel!
+    @IBOutlet weak var tableViewBilan: UITableView!
+
+    
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         self.nom.text = (membre?.nom)! + "" + (membre?.prenom)!
-        //self.prenom.text = membre?.prenom
         let depDouble : Double = membre?.dette ?? 0
         let depString : String = String(format:"%f", depDouble)
         self.depense.text = depString
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MM/dd/yyyy"
+        let dateArrivee : String = dateFormatterPrint.string(from: (membre?.dateArrivee!)!)
+        self.dateArrivee.text = dateArrivee
+        if (membre?.dette)! >= 0.0 {
+            self.balancePerso.text = "+ " + String((membre?.dette)!)
+            self.balancePerso.textColor = UIColor.green
+        }
+        else {
+            self.balancePerso.text = String((membre?.dette)!)
+            self.balancePerso.textColor = UIColor.red
+        }
+        self.reload()
+        super.viewDidLoad()
+        self.setupView()
+        self.tableDepenseViewController = TableDepenseMembreViewController(tableView: self.tableView, membre: self.membre!)
+        self.tableBilanViewController = TableBilanViewController(tableView: self.tableViewBilan, membre: self.membre!)
+        segmentedControl.selectedSegmentIndex = 0
+        self.tableView.isHidden = false
+        self.tableViewBilan.isHidden = true
+    }
+    
+    func reload(){
         if membre?.dateDepart != nil {
             self.messageDepart.text = "Ce membre a quitté le voyage le :"
             let dateFormatterPrint = DateFormatter()
@@ -41,10 +72,17 @@ class BilanPersoViewController: UIViewController {
             self.messageDepart.text = ""
             self.dateDepart.text = ""
         }
-        super.viewDidLoad()
-        self.setupView()
+        //somme des paiements du membre
+        var somme : Double = 0.0
+        let paiementFetch = PaiementFetchResultController(membre: membre).paiementFetched.fetchedObjects
+        if paiementFetch != nil {
+            for paiement in paiementFetch!{
+                somme = somme + paiement.montantPaye
+            }
+            depense.text = String(somme)
+        }
+        else{ depense.text = "0"}
     }
-    
     private func setupSegmentedControl() {
         // Configure Segmented Control
         segmentedControl.removeAllSegments()
@@ -59,72 +97,21 @@ class BilanPersoViewController: UIViewController {
     
     private func updateView() {
         if segmentedControl.selectedSegmentIndex == 0 {
-//            self.remove(asChildViewController: DetteViewController)
-//            self.add(asChildViewController: DepenseViewController)
-            container = DepenseViewController.view
+            self.tableView.isHidden = false
+            self.tableViewBilan.isHidden = true
+            //self.tableDepenseViewController.tableView.reloadData()
+            //self.
         } else {
-//            self.remove(asChildViewController: DepenseViewController)
-//            self.add(asChildViewController: DetteViewController)
-            container = DetteViewController.view
+            self.tableView.isHidden = true
+            self.tableViewBilan.isHidden = false
+            //self.tableBilanViewController.tableView.reloadData()
         }
     }
     func setupView() {
         setupSegmentedControl()
-        
         updateView()
     }
     
-    private lazy var DepenseViewController: DepenseMembreViewController = {
-        // Load Storyboard
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: "DepenseMembreViewController") as! DepenseMembreViewController
-        
-        // Add View Controller as Child View Controller
-        self.addChild(viewController)
-        
-        return viewController
-    }()
-    
-    private lazy var DetteViewController: DetteMembreViewController = {
-        // Load Storyboard
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: "DetteMembreViewController") as! DetteMembreViewController
-        
-        // Add View Controller as Child View Controller
-        self.addChild(viewController)
-        
-        return viewController
-    }()
-    
-    private func add(asChildViewController viewController: UIViewController) {
-        // Add Child View Controller
-        addChild(viewController)
-        
-        // Add Child View as Subview
-        view.addSubview(viewController.view)
-        
-        // Configure Child View
-        viewController.view.frame = view.bounds
-        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        // Notify Child View Controller
-        viewController.didMove(toParent: self)
-    }
-    
-    private func remove(asChildViewController viewController: UIViewController) {
-        // Notify Child View Controller
-        viewController.willMove(toParent: nil)
-        
-        // Remove Child View From Superview
-        viewController.view.removeFromSuperview()
-        
-        // Notify Child View Controller
-        viewController.removeFromParent()
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (sender as? UIButton) != nil {
@@ -133,5 +120,10 @@ class BilanPersoViewController: UIViewController {
                 }
             }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.reload()
+    }
+    
+    
     
 }

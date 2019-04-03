@@ -1,27 +1,29 @@
 //
-//  MembreViewController.swift
+//  TableDepenseMembreViewController.swift
 //  TripManager
 //
-//  Created by Audrey Samson on 01/04/2019.
+//  Created by Audrey Samson on 03/04/2019.
 //  Copyright © 2019 Julien Roumagnac. All rights reserved.
 //
 
 import UIKit
 
-class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewDataSource, MembreSetViewModelDelegate {
+class TableDepenseMembreViewController : NSObject, UITableViewDelegate, UITableViewDataSource, PaiementSetViewModelDelegate {
     var tableView   : UITableView
-    var membresViewModel : MembreSetViewModel
-    let fetchResultController : MembreFetchResultController
-   
-    init(tableView: UITableView, voyage : Voyage) {
+    let fetchResultController : PaiementFetchResultController
+    var membre : Membres?
+    var paiementViewModel : PaiementSetViewModel
+    
+    init(tableView: UITableView, membre : Membres) {
         self.tableView        = tableView
-        self.fetchResultController = MembreFetchResultController(view : tableView, voyage: voyage)
-        self.membresViewModel = MembreSetViewModel(data : self.fetchResultController.membreFetched)
+        self.membre = membre
+        self.fetchResultController = PaiementFetchResultController(membre: membre)
+        self.paiementViewModel = PaiementSetViewModel(data : self.fetchResultController.paiementFetched)
         super.init()
         self.tableView.dataSource      = self
-        self.membresViewModel.delegate = self
+        self.paiementViewModel.delegate = self
         self.tableView.delegate = self
-
+        
     }
     //-------------------------------------------------------------------------------------------------
     // MARK: - TableView DataSource
@@ -31,10 +33,10 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.membresViewModel.count
+        return self.paiementViewModel.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MembreCellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PaiementCell", for: indexPath)
         // Configure the cell...
         return configure(cell: cell, atIndexPath: indexPath)
     }
@@ -49,25 +51,25 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     /// called when a Person is deleted from set
     ///
     /// - Parameter indexPath: (section,row) of deletion
-    func membreDeleted(at indexPath: IndexPath){
+    func paiementDeleted(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
     /// called when a Person is updated in set
     ///
     /// - Parameter indexPath: (section, row) of updating
-    func membreUpdated(at indexPath: IndexPath){
+    func paiementUpdated(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
     /// called when a Person is added to set
     ///
     /// - Parameter indexPath: (section,row) of add
-    func membreAdded(at indexPath: IndexPath){
+    func paiementAdded(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
     
     func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
-        let membre = self.fetchResultController.membreFetched.object(at: indexPath)
-        CoreDataManager.context.delete(membre)
+        let paiement = self.fetchResultController.paiementFetched.object(at: indexPath)
+        CoreDataManager.context.delete(paiement)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -78,28 +80,13 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     // MARK: - convenience methods
     @discardableResult
     private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) -> UITableViewCell{
-        if let membre = self.membresViewModel.get(membreAt: indexPath.row){
-            if let cel = cell as? MembrePresenterCell {
-                cel.nomMembre.text = String((membre.nom!.prefix(1)))
-                cel.prenomMembre.text = membre.prenom
+        if let paiement = self.paiementViewModel.get(paiementAt: indexPath.row){
+            if let cel = cell as? PaiementMembreBilanTableViewCell {
+                cel.prixP.text = String(paiement.montantPaye) + " €"
                 let dateFormatterPrint = DateFormatter()
                 dateFormatterPrint.dateFormat = "MM/dd/yyyy"
-                let date : String = dateFormatterPrint.string(from: membre.dateArrivee!)
-                //cel.dateArriveeMembre.text = date
-                if membre.dateDepart != nil {
-                    cel.backgroundColor = UIColor.gray
-                }
-                //somme des paiements du membre
-                var somme : Double = 0.0
-                var paiementFetch = PaiementFetchResultController(membre: membre).paiementFetched.fetchedObjects
-                if paiementFetch != nil {
-                    for paiement in paiementFetch!{
-                        somme = somme + paiement.montantPaye
-                    }
-                    cel.totalDepenseMembre.text = String(somme)
-                }
-                else{ cel.totalDepenseMembre.text = "0"}
-                
+                let date : String = dateFormatterPrint.string(from: (paiement.objectif?.dateDepense!)!)
+                cel.dateP.text = date
             }
         }
         return cell }

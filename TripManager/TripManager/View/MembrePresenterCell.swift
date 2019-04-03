@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class MembrePresenterCell : UITableViewCell{
-    
     @IBOutlet weak var nomMembre : UILabel!
     @IBOutlet weak var prenomMembre : UILabel!
-    @IBOutlet weak var dateArriveeMembre : UILabel!
     @IBOutlet weak var totalDepenseMembre : UILabel!
 }

@@ -31,14 +31,17 @@
 		02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */; };
 		02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */; };
 		02F9AC412253D5E0002371E6 /* BilanPersoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC402253D5E0002371E6 /* BilanPersoViewController.swift */; };
-		02F9AC4922540BFC002371E6 /* DepenseMembreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC4822540BFC002371E6 /* DepenseMembreViewController.swift */; };
-		02F9AC4B22540C9C002371E6 /* DetteMembreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC4A22540C9C002371E6 /* DetteMembreViewController.swift */; };
 		02F9AC4D225414F0002371E6 /* DepartMembreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC4C225414F0002371E6 /* DepartMembreViewController.swift */; };
 		02F9AC4F2254D47D002371E6 /* PaiementFetchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC4E2254D47D002371E6 /* PaiementFetchResultController.swift */; };
 		02F9AC522254D761002371E6 /* DepenseFetchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC512254D761002371E6 /* DepenseFetchResultController.swift */; };
 		02F9AC542254D9D1002371E6 /* DepenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC532254D9D1002371E6 /* DepenseTableViewController.swift */; };
 		02F9AC582254DC45002371E6 /* DepenseSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC572254DC45002371E6 /* DepenseSetViewModel.swift */; };
 		02F9AC5B2254E02F002371E6 /* DepenseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC5A2254E02F002371E6 /* DepenseDAO.swift */; };
+		02F9AC5D22554D0B002371E6 /* TableDepenseMembreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC5C22554D0B002371E6 /* TableDepenseMembreViewController.swift */; };
+		02F9AC5F22554D23002371E6 /* TableBilanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC5E22554D23002371E6 /* TableBilanViewController.swift */; };
+		02F9AC6122554DE8002371E6 /* PaiementSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC6022554DE8002371E6 /* PaiementSetViewModel.swift */; };
+		02F9AC632255503E002371E6 /* PaiementMembreBilanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC622255503E002371E6 /* PaiementMembreBilanTableViewCell.swift */; };
+		02F9AC652255590B002371E6 /* DettePersoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9AC642255590B002371E6 /* DettePersoTableViewCell.swift */; };
 		0BAF8D2D2244006A002C3C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D2C2244006A002C3C8F /* AppDelegate.swift */; };
 		0BAF8D322244006A002C3C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF8D302244006A002C3C8F /* Main.storyboard */; };
 		0BAF8D352244006A002C3C8F /* TripManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF8D332244006A002C3C8F /* TripManager.xcdatamodeld */; };
@@ -94,14 +97,17 @@
 		02EE1DD82247DDEA00645168 /* DetailVoyageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVoyageViewController.swift; sourceTree = "<group>"; };
 		02EE1DDA2247E44100645168 /* MembreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembreTableViewCell.swift; sourceTree = "<group>"; };
 		02F9AC402253D5E0002371E6 /* BilanPersoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilanPersoViewController.swift; sourceTree = "<group>"; };
-		02F9AC4822540BFC002371E6 /* DepenseMembreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepenseMembreViewController.swift; sourceTree = "<group>"; };
-		02F9AC4A22540C9C002371E6 /* DetteMembreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetteMembreViewController.swift; sourceTree = "<group>"; };
 		02F9AC4C225414F0002371E6 /* DepartMembreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartMembreViewController.swift; sourceTree = "<group>"; };
 		02F9AC4E2254D47D002371E6 /* PaiementFetchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaiementFetchResultController.swift; sourceTree = "<group>"; };
 		02F9AC512254D761002371E6 /* DepenseFetchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepenseFetchResultController.swift; sourceTree = "<group>"; };
 		02F9AC532254D9D1002371E6 /* DepenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepenseTableViewController.swift; sourceTree = "<group>"; };
 		02F9AC572254DC45002371E6 /* DepenseSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepenseSetViewModel.swift; sourceTree = "<group>"; };
 		02F9AC5A2254E02F002371E6 /* DepenseDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepenseDAO.swift; sourceTree = "<group>"; };
+		02F9AC5C22554D0B002371E6 /* TableDepenseMembreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDepenseMembreViewController.swift; sourceTree = "<group>"; };
+		02F9AC5E22554D23002371E6 /* TableBilanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBilanViewController.swift; sourceTree = "<group>"; };
+		02F9AC6022554DE8002371E6 /* PaiementSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaiementSetViewModel.swift; sourceTree = "<group>"; };
+		02F9AC622255503E002371E6 /* PaiementMembreBilanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaiementMembreBilanTableViewCell.swift; sourceTree = "<group>"; };
+		02F9AC642255590B002371E6 /* DettePersoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DettePersoTableViewCell.swift; sourceTree = "<group>"; };
 		0BAF8D292244006A002C3C8F /* TripManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF8D2C2244006A002C3C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BAF8D312244006A002C3C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,6 +184,8 @@
 				02BE96E4224A7DF7009EADCF /* MembreDepenseViewCell.swift */,
 				02E942442252AD26000370CD /* MembrePresenterCell.swift */,
 				60626FC92253C1C200E9707C /* BalanceTableViewCell.swift */,
+				02F9AC622255503E002371E6 /* PaiementMembreBilanTableViewCell.swift */,
+				02F9AC642255590B002371E6 /* DettePersoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,10 +219,10 @@
 				02E942402252AA62000370CD /* ViewControllerListeMembre.swift */,
 				02E9423E2252A86C000370CD /* MembreTableViewController.swift */,
 				02E9423A2252A2EB000370CD /* MembreFetchResultController.swift */,
-				02F9AC402253D5E0002371E6 /* BilanPersoViewController.swift */,
-				02F9AC4822540BFC002371E6 /* DepenseMembreViewController.swift */,
-				02F9AC4A22540C9C002371E6 /* DetteMembreViewController.swift */,
 				02F9AC4C225414F0002371E6 /* DepartMembreViewController.swift */,
+				02F9AC402253D5E0002371E6 /* BilanPersoViewController.swift */,
+				02F9AC5C22554D0B002371E6 /* TableDepenseMembreViewController.swift */,
+				02F9AC5E22554D23002371E6 /* TableBilanViewController.swift */,
 			);
 			path = Membre;
 			sourceTree = "<group>";
@@ -245,6 +253,7 @@
 				02E9423C2252A4AD000370CD /* MembreSetViewModel.swift */,
 				02E942462252B21B000370CD /* VoyageSetViewModel.swift */,
 				02F9AC572254DC45002371E6 /* DepenseSetViewModel.swift */,
+				02F9AC6022554DE8002371E6 /* PaiementSetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -293,12 +302,12 @@
 				0266D3AE2247A0E00018EC7B /* Controller */,
 				0BAF8D2C2244006A002C3C8F /* AppDelegate.swift */,
 				02E9423422529D08000370CD /* CoreDataManager.swift */,
+				605DC15B2255120A0085B851 /* CurrentTrip.swift */,
 				0BAF8D302244006A002C3C8F /* Main.storyboard */,
 				0BAF8D362244006D002C3C8F /* Assets.xcassets */,
 				0BAF8D382244006D002C3C8F /* LaunchScreen.storyboard */,
 				0BAF8D3B2244006D002C3C8F /* Info.plist */,
 				0BAF8D332244006A002C3C8F /* TripManager.xcdatamodeld */,
-				605DC15B2255120A0085B851 /* CurrentTrip.swift */,
 			);
 			path = TripManager;
 			sourceTree = "<group>";
@@ -459,7 +468,6 @@
 				02F9AC4D225414F0002371E6 /* DepartMembreViewController.swift in Sources */,
 				02E94227224E1919000370CD /* DepenseViewCell.swift in Sources */,
 				02E9423B2252A2EB000370CD /* MembreFetchResultController.swift in Sources */,
-				02F9AC4B22540C9C002371E6 /* DetteMembreViewController.swift in Sources */,
 				02E9423722529E6C000370CD /* VoyageCoreData.swift in Sources */,
 				02F9AC4F2254D47D002371E6 /* PaiementFetchResultController.swift in Sources */,
 				02BE96E5224A7DF7009EADCF /* MembreDepenseViewCell.swift in Sources */,
@@ -467,22 +475,26 @@
 				604ED4E822525B500061C7F4 /* BilanGeneralModelView.swift in Sources */,
 				02E942492252B2DB000370CD /* VoyageDAO.swift in Sources */,
 				02E9423F2252A86C000370CD /* MembreTableViewController.swift in Sources */,
+				02F9AC5F22554D23002371E6 /* TableBilanViewController.swift in Sources */,
 				0BAF8D2D2244006A002C3C8F /* AppDelegate.swift in Sources */,
 				02F9AC582254DC45002371E6 /* DepenseSetViewModel.swift in Sources */,
 				02E942412252AA62000370CD /* ViewControllerListeMembre.swift in Sources */,
 				02E9423D2252A4AD000370CD /* MembreSetViewModel.swift in Sources */,
 				02F9AC5B2254E02F002371E6 /* DepenseDAO.swift in Sources */,
 				02E9423522529D08000370CD /* CoreDataManager.swift in Sources */,
+				02F9AC652255590B002371E6 /* DettePersoTableViewCell.swift in Sources */,
+				02F9AC632255503E002371E6 /* PaiementMembreBilanTableViewCell.swift in Sources */,
 				02EE1DD72247CF6000645168 /* NewVoyageViewController.swift in Sources */,
+				02F9AC6122554DE8002371E6 /* PaiementSetViewModel.swift in Sources */,
 				02E942472252B21B000370CD /* VoyageSetViewModel.swift in Sources */,
 				02E9424B2252B42C000370CD /* VoyageFetchResultController.swift in Sources */,
 				02EE1DDB2247E44100645168 /* MembreTableViewCell.swift in Sources */,
 				02E942452252AD26000370CD /* MembrePresenterCell.swift in Sources */,
 				02E94225224E10AB000370CD /* ListeDepenseViewController.swift in Sources */,
-				02F9AC4922540BFC002371E6 /* DepenseMembreViewController.swift in Sources */,
 				02E94229224E7B1D000370CD /* ModelVoyage.swift in Sources */,
 				02BE96E3224A4640009EADCF /* NewDepenseViewController.swift in Sources */,
 				605DC15C2255120A0085B851 /* CurrentTrip.swift in Sources */,
+				02F9AC5D22554D0B002371E6 /* TableDepenseMembreViewController.swift in Sources */,
 				02F9AC522254D761002371E6 /* DepenseFetchResultController.swift in Sources */,
 				02EE1DD92247DDEA00645168 /* DetailVoyageViewController.swift in Sources */,
 				604ED4EA22525DCC0061C7F4 /* DetteTableViewCell.swift in Sources */,

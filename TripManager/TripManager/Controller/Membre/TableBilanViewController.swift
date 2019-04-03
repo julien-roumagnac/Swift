@@ -1,27 +1,32 @@
 //
-//  MembreViewController.swift
+//  TableBilanViewController.swift
 //  TripManager
 //
-//  Created by Audrey Samson on 01/04/2019.
+//  Created by Audrey Samson on 03/04/2019.
 //  Copyright © 2019 Julien Roumagnac. All rights reserved.
 //
-
 import UIKit
 
-class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewDataSource, MembreSetViewModelDelegate {
+class TableBilanViewController : NSObject, UITableViewDelegate, UITableViewDataSource, MembreSetViewModelDelegate {
+    
+    var dette : [Dette] = []
     var tableView   : UITableView
-    var membresViewModel : MembreSetViewModel
     let fetchResultController : MembreFetchResultController
-   
-    init(tableView: UITableView, voyage : Voyage) {
-        self.tableView        = tableView
-        self.fetchResultController = MembreFetchResultController(view : tableView, voyage: voyage)
-        self.membresViewModel = MembreSetViewModel(data : self.fetchResultController.membreFetched)
+    var membre : Membres?
+    var membreViewModel : MembreSetViewModel
+    var bilanViewModel : BilanGeneralViewModel
+    
+    init(tableView: UITableView, membre : Membres) {
+        self.tableView = tableView
+        self.membre = membre
+        self.fetchResultController = MembreFetchResultController(view: tableView, voyage: CurrentTrip.sharedInstance!)
+        self.membreViewModel = MembreSetViewModel(data : self.fetchResultController.membreFetched)
+        self.bilanViewModel = BilanGeneralViewModel(membres: self.fetchResultController.membreFetched.fetchedObjects!)
+        self.dette = self.bilanViewModel.bilanMembrePerso(membre: membre)
         super.init()
         self.tableView.dataSource      = self
-        self.membresViewModel.delegate = self
+        self.membreViewModel.delegate = self
         self.tableView.delegate = self
-
     }
     //-------------------------------------------------------------------------------------------------
     // MARK: - TableView DataSource
@@ -31,10 +36,10 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.membresViewModel.count
+        return self.dette.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MembreCellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetteCell", for: indexPath)
         // Configure the cell...
         return configure(cell: cell, atIndexPath: indexPath)
     }
@@ -66,8 +71,8 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     }
     
     func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
-        let membre = self.fetchResultController.membreFetched.object(at: indexPath)
-        CoreDataManager.context.delete(membre)
+        let dette = self.fetchResultController.membreFetched.object(at: indexPath)
+        CoreDataManager.context.delete(dette)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -78,29 +83,12 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     // MARK: - convenience methods
     @discardableResult
     private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) -> UITableViewCell{
-        if let membre = self.membresViewModel.get(membreAt: indexPath.row){
-            if let cel = cell as? MembrePresenterCell {
-                cel.nomMembre.text = String((membre.nom!.prefix(1)))
-                cel.prenomMembre.text = membre.prenom
-                let dateFormatterPrint = DateFormatter()
-                dateFormatterPrint.dateFormat = "MM/dd/yyyy"
-                let date : String = dateFormatterPrint.string(from: membre.dateArrivee!)
-                //cel.dateArriveeMembre.text = date
-                if membre.dateDepart != nil {
-                    cel.backgroundColor = UIColor.gray
-                }
-                //somme des paiements du membre
-                var somme : Double = 0.0
-                var paiementFetch = PaiementFetchResultController(membre: membre).paiementFetched.fetchedObjects
-                if paiementFetch != nil {
-                    for paiement in paiementFetch!{
-                        somme = somme + paiement.montantPaye
-                    }
-                    cel.totalDepenseMembre.text = String(somme)
-                }
-                else{ cel.totalDepenseMembre.text = "0"}
-                
+        let detteP = self.dette[indexPath.row]
+            if let cel = cell as? DettePersoTableViewCell {
+                cel.créancier.text = detteP.creancié.prenom
+                cel.endetté.text = detteP.endetté.prenom
+                cel.prix.text = String(detteP.montant)
             }
-        }
         return cell }
 }
+
