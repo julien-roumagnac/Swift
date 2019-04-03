@@ -30,7 +30,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         let voyage = Voyage(context: context)
         voyage.nom = nom
         voyage.dateDebut = date.description
-        voyage.photo = nil
+        voyage.photo = (self.photoNewVoyage.image ?? UIImage(named: "placeholder")!).pngData()
         for membre in membres {
             voyage.addToVoyageurs(membre)
             membre.destination = voyage
@@ -96,4 +96,46 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         self.membres.remove(at: at)
         CoreDataManager.context.delete(m)
     }
+    //MARK - Photo Manager
+    
+    @IBAction func displayActionSheet(_ sender: Any) {
+        let alert = UIAlertController(title: "Update your photo", message: "Please select an option", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Take a new photo", style: .default , handler:{ (UIAlertAction)in
+            self.presentUIImagePicker(sourceType: .camera)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Choose from Library", style: .default , handler:{ (UIAlertAction)in
+            self.presentUIImagePicker(sourceType: .photoLibrary)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    
+    private func presentUIImagePicker(sourceType: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        present(picker, animated: true, completion: nil)
+    }
+    
+    
 }
+extension NewVoyageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) -> UIImage {
+        guard let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage else {
+            dismiss(animated: true, completion: nil)
+            return UIImage(named: "placeholder")!
+        }
+        dismiss(animated: true, completion: nil)
+        self.photoNewVoyage.image = chosenImage
+        return chosenImage
+}
+}
+
+

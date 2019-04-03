@@ -22,6 +22,7 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
     @IBOutlet weak var detteTable: UITableView!
     @IBOutlet weak var balanceTable: UITableView!
     @IBOutlet weak var titreBilan: UILabel!
+    @IBOutlet weak var imageVoyage: UIImageView!
     
      fileprivate lazy var membresFetched : NSFetchedResultsController<Membres> = {
            //prepare a requet
@@ -38,6 +39,7 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
     override func viewDidLoad() {
         
         titreBilan.text = self.voyage?.nom
+        self.imageVoyage.image = UIImage(data: (self.voyage?.photo!)!)!
         do{
             try self.membresFetched.performFetch()
         }
@@ -76,6 +78,7 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
         let indexPath = self.detteTable.indexPathForRow(at: buttonPosition)
         self.deleteRemboursement(at: indexPath!.row)
         detteTable.reloadData()
+        balanceTable.reloadData()
         
     }
     func deleteRemboursement(at: Int){
@@ -106,7 +109,7 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
             if self.maxDette == Double(0) {
                 val = 0
             }else {
-                val = (voyageMembres[indexPath.row].dette  / self.maxDette) * 200
+                val = (voyageMembres[indexPath.row].dette  / self.maxDette) * 75
             }
             
             cell.montantLabel.text = voyageMembres[indexPath.row].dette.description
@@ -115,14 +118,18 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
             var size = CGSize(width: val, height: 25)
             cell.CouleurLabel.bounds.size = size
             
+            
+            
             if val > 0 {
                 cell.CouleurLabel.backgroundColor = UIColor.red
-    
-                
+                cell.CouleurLabel.frame.origin = CGPoint(x: 200 + (150 - val), y: 6)
+                print("ROUGE = x : ", CGPoint(x: 200 + (150 - val), y: 6).x," y : ",CGPoint(x: 200 + (150 - val), y: 6).y ," val : ", val)
             }
             else {
                 cell.CouleurLabel.backgroundColor = UIColor.green
                 
+                cell.CouleurLabel.frame.origin = CGPoint(x: 200 + (150 + val), y: 6)
+                print("VERT = x : ", CGPoint(x: 200 + (150 - val), y: 6).x," y : ",CGPoint(x: 200 + (150 - val), y: 6).y ," val : ", val)
                 
             }
             

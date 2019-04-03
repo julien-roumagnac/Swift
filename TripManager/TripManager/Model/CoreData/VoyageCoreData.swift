@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 /*
  // MARK: -
  Voyage type
@@ -46,6 +48,7 @@ extension Voyage{
         self.dateFin = nil
         self.photo = nil
     }
+   
     
     /// initialize a `Voyage`
     ///

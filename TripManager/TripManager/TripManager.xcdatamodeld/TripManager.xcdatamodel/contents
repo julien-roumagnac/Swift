@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Depense" representedClassName="Depense" syncable="YES" codeGenerationType="class">
         <attribute name="dateDepense" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="montant" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -25,13 +25,13 @@
         <attribute name="dateDebut" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateFin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="voyageurs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Membres" inverseName="destination" inverseEntity="Membres" syncable="YES"/>
     </entity>
     <elements>
         <element name="Depense" positionX="319.73046875" positionY="-74.375" width="128" height="105"/>
         <element name="Membres" positionX="-32.859375" positionY="-108.76171875" width="128" height="150"/>
         <element name="Paiement" positionX="118.7265625" positionY="118.34375" width="128" height="103"/>
-        <element name="Voyage" positionX="-179.75390625" positionY="106.3125" width="128" height="118"/>
+        <element name="Voyage" positionX="-179.75390625" positionY="106.3125" width="128" height="120"/>
     </elements>
 </model>
