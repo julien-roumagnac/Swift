@@ -10,41 +10,30 @@ import Foundation
 import UIKit
 import CoreData
 
-class ListeDepenseViewController : UIViewController,UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
+class ListeDepenseViewController : UIViewController{
     
+    var tableDepenseController : DepenseTableViewController!
 
     var voyage : Voyage?
     
     @IBOutlet weak var titreVoyage: UILabel!
     @IBOutlet weak var tableDepense : UITableView!
     
-    
-    
-    fileprivate lazy var depenseFetched : NSFetchedResultsController<Depense> = {
-        //prepare a requet
-        let request : NSFetchRequest<Depense> = Depense.fetchRequest()
-        let appD = UIApplication.shared.delegate as? AppDelegate
-        let context = appD!.persistentContainer.viewContext
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Depense.dateDepense),ascending:false)]
-        //request.predicate = NSPredicate(format: "participants.payeur.destination = %@", voyage!)
-        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchResultController.delegate = self
-        return fetchResultController
-    }()
+
     
     override func viewDidLoad() {
         titreVoyage.text = self.voyage?.nom
         super.viewDidLoad()
-        //self.initDepense()
-        do{
-            try self.depenseFetched.performFetch()
-        }
-        catch let error as NSError{
-            
-        }
+        // Do any additional setup after loading the view, typically from a nib.
+        self.tableDepenseController = DepenseTableViewController(tableView: self.tableDepense, voyage: voyage!)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let section = self.depenseFetched.sections?[section] else {
             fatalError("Unexpected section number")
         }
@@ -111,7 +100,7 @@ class ListeDepenseViewController : UIViewController,UITableViewDataSource, UITab
         }
         return appD.persistentContainer.viewContext
     }
-    
+    */
     
 }
 

@@ -24,12 +24,11 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     
     @IBAction func saveAction(_ sender: Any) {
         let nom : String = nomNewVoyage.text ?? ""
-        let date : Date = dateVoyage.date
         guard (nom != "") else {return }
         let context = CoreDataManager.context
         let voyage = Voyage(context: context)
         voyage.nom = nom
-        voyage.dateDebut = date.description
+        voyage.dateDebut = self.dateVoyage.date.description
         voyage.photo = (self.photoNewVoyage.image ?? UIImage(named: "placeholder")!).pngData()
         for membre in membres {
             voyage.addToVoyageurs(membre)
@@ -46,8 +45,13 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     }
     
     @IBAction func ajoutAction(_ sender: Any) {
-        self.newMembre(nom: self.nomNewMembre.text ?? "", prenom: self.prenomNewMembre.text ?? "",date: dateANewMembre.date)
-        tableMembres.reloadData()
+        if((self.nomNewMembre.text?.isEmpty)! || (self.prenomNewMembre.text?.isEmpty)!) {
+            return
+        }
+        else{
+            self.newMembre(nom: self.nomNewMembre.text ?? "", prenom: self.prenomNewMembre.text ?? "",date: self.dateANewMembre.date)
+            tableMembres.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -85,7 +89,7 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         let m = Membres(context: context)
         m.nom = nom
         m.prenom = prenom
-        m.dateArrivee = date.description
+        m.dateArrivee = date
         self.membres.append(m)
         self.nomNewMembre.text = ""
         self.prenomNewMembre.text = ""

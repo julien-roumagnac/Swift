@@ -27,10 +27,11 @@ extension Voyage{
         set { self.photo = photoV }
     }*/
     /// date of Voyage
-    public var dateDebutV  : String { return self.dateDebut  ?? "" }
+    public var dateDebutV  : String { return self.dateDebut!
+    }
     /// departure date of Voyage
-    public var dateFinV  : String? {
-        get { return self.dateFin  ?? "" }
+    public var dateFinV  : Date? {
+        get { return self.dateFin  ?? nil }
         set { self.dateFin = dateFinV }
     }
     
@@ -41,10 +42,10 @@ extension Voyage{
     ///   - photo:  `Image` photo of `Voyage`
     ///   - dateDebut:  `String` date of `Voyage`
     ///   - dateFin:  `String` departure date of `Voyage`
-    convenience init(nomV: String, dateDebutV: String){
+    convenience init(nomV: String, dateDebutV: Date){
         self.init(context: CoreDataManager.context)
         self.nom = nomV
-        self.dateDebut = dateDebutV
+        self.dateDebut = dateDebutV.description
         self.dateFin = nil
         self.photo = nil
     }

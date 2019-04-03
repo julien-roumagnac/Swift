@@ -25,8 +25,7 @@ class DepartMembreViewController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        let dateD : String = self.dateDepart.date.description
-        self.membre?.dateDepart = dateD
+        self.membre?.dateDepart = dateDepart.date
         do{
             try CoreDataManager.context.save()
         }

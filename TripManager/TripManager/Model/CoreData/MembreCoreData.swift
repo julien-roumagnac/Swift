@@ -44,12 +44,12 @@ extension Membres{
         set { self.dette = detteM}
     }
     
-    public var dateArriveM : String? {
+    public var dateArriveM : Date? {
         get { return self.dateArrivee }
         set { self.dateArrivee = dateArriveM }
     }
     
-    public var dateDepartM : String? {
+    public var dateDepartM : Date? {
         get { return self.dateDepart }
         set { self.dateDepart = dateDepartM }
     }
@@ -69,7 +69,7 @@ extension Membres{
         self.nom  = nomM
         self.dette = 0
         self.dateDepart = nil
-        self.dateArrivee = Date().description
+        self.dateArrivee = Date()
     }
     
     /*

@@ -47,15 +47,10 @@ class DetailVoyageViewController: UIViewController,UITableViewDelegate,UITableVi
             print("error")
         }
         var membres = membresFetched.fetchedObjects!
-        print("error1")
         self.voyageMembres = membres
-        print("error2")
         var bilanGVM : BilanGeneralViewModel = BilanGeneralViewModel(membres:membres)
-        print("error3")
         remboursements = bilanGVM.bilan
-        print("error4")
         maxDette = bilanGVM.maxDette
-        print("error5")
         
     }
     

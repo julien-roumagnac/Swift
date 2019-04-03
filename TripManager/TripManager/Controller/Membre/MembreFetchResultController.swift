@@ -12,7 +12,7 @@ import CoreData
 class MembreFetchResultController: NSObject, NSFetchedResultsControllerDelegate{
     
     var voyage : Voyage?
-    let tableView  : UITableView
+    var tableView  : UITableView
 
     init(view : UITableView, voyage : Voyage){
         self.tableView  = view
@@ -24,6 +24,7 @@ class MembreFetchResultController: NSObject, NSFetchedResultsControllerDelegate{
         catch let error as NSError{
             fatalError(error.description)
         } }
+    
     //-------------------------------------------------------------------------------------------------
     // MARK: - FetchResultController
     lazy var membreFetched : NSFetchedResultsController<Membres> = {

@@ -21,6 +21,8 @@ class BilanPersoViewController: UIViewController {
     
     @IBOutlet var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var bouttonDelete : UIButton!
+    
     override func viewDidLoad() {
         self.nom.text = (membre?.nom)! + "" + (membre?.prenom)!
         //self.prenom.text = membre?.prenom
@@ -28,8 +30,12 @@ class BilanPersoViewController: UIViewController {
         let depString : String = String(format:"%f", depDouble)
         self.depense.text = depString
         if membre?.dateDepart != nil {
-            self.messageDepart.text = "Ce membre à quitter le voyage le :"
-            self.dateDepart.text = membre?.dateDepart
+            self.messageDepart.text = "Ce membre a quitté le voyage le :"
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "MM/dd/yyyy"
+            let date : String = dateFormatterPrint.string(from: (membre?.dateDepart!)!)
+            self.dateDepart.text = date
+            self.bouttonDelete.isHidden = true
         }
         else{
             self.messageDepart.text = ""

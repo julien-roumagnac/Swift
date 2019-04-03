@@ -1219,7 +1219,7 @@
                                 <rect key="frame" x="16" y="204" width="343" height="389"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="depenseCell" id="hqo-PT-IPh" customClass="DepenseViewCell" customModule="TripManager" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepenseCellId" id="hqo-PT-IPh" customClass="DepenseViewCell" customModule="TripManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hqo-PT-IPh" id="ojz-Gy-LAS">
@@ -1404,6 +1404,7 @@
                         <viewLayoutGuide key="safeArea" id="L3K-Pl-Ljp"/>
                     </view>
                     <connections>
+                        <outlet property="bouttonDelete" destination="CGs-rU-F6x" id="BZ0-nJ-pfD"/>
                         <outlet property="container" destination="XAR-Yi-ZQj" id="IYA-nM-fQc"/>
                         <outlet property="dateDepart" destination="D2n-M4-0No" id="Qya-Ul-4ip"/>
                         <outlet property="depense" destination="Phu-pB-5D0" id="dpO-Df-kmv"/>
@@ -1455,6 +1456,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="WpA-u0-VKy"/>
         <segue reference="9od-UA-PXG"/>
-        <segue reference="lNJ-h5-ufk"/>
+        <segue reference="LMW-M1-zbu"/>
     </inferredMetricsTieBreakers>
 </document>

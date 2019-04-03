@@ -1,28 +1,49 @@
 //
-//  MembreViewController.swift
+//  DepenseTableViewController.swift
 //  TripManager
 //
-//  Created by Audrey Samson on 01/04/2019.
+//  Created by Audrey Samson on 03/04/2019.
 //  Copyright © 2019 Julien Roumagnac. All rights reserved.
 //
 
 import UIKit
 
-class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewDataSource, MembreSetViewModelDelegate {
+class DepenseTableViewController : NSObject, UITableViewDelegate, UITableViewDataSource{
+    
+    var depense : [Depense]
+    var voyage : Voyage
     var tableView   : UITableView
-    var membresViewModel : MembreSetViewModel
-    let fetchResultController : MembreFetchResultController
-   
+    var depenseViewModel : DepenseSetViewModel
+    var fetchResultController : DepenseFetchResultController
+    
     init(tableView: UITableView, voyage : Voyage) {
-        self.tableView        = tableView
-        self.fetchResultController = MembreFetchResultController(view : tableView, voyage: voyage)
-        self.membresViewModel = MembreSetViewModel(data : self.fetchResultController.membreFetched)
+        self.voyage = voyage
+        self.depense = []
+        self.tableView = tableView
+        self.fetchResultController = DepenseFetchResultController(view: tableView, depenses: self.depense)
+        self.depenseViewModel = DepenseSetViewModel(data : self.fetchResultController.depenseFetched)
         super.init()
         self.tableView.dataSource      = self
-        self.membresViewModel.delegate = self
         self.tableView.delegate = self
-
+        self.depenseReload()
     }
+    
+    func depenseReload(){
+        let membreFetch = MembreFetchResultController(view: tableView, voyage: voyage)
+        let membres = membreFetch.membreFetched.fetchedObjects
+        guard !(membres == nil) else {return}
+        for membre in membres! {
+            let paiementFetch = PaiementFetchResultController(membre: membre)
+            let paiements = paiementFetch.paiementFetched.fetchedObjects
+            if !(paiements == nil){
+                for paiement in paiements!{
+                    if !(self.depense.contains(paiement.objectif!)){
+                        self.depense.append(paiement.objectif!)}
+                }
+            }
+        }
+        self.fetchResultController = DepenseFetchResultController(view: self.tableView, depenses: self.depense)
+        }
     //-------------------------------------------------------------------------------------------------
     // MARK: - TableView DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,10 +52,10 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.membresViewModel.count
+        return self.depense.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MembreCellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DepenseCellId", for: indexPath)
         // Configure the cell...
         return configure(cell: cell, atIndexPath: indexPath)
     }
@@ -49,25 +70,25 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     /// called when a Person is deleted from set
     ///
     /// - Parameter indexPath: (section,row) of deletion
-    func membreDeleted(at indexPath: IndexPath){
+    func depenseDeleted(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
     /// called when a Person is updated in set
     ///
     /// - Parameter indexPath: (section, row) of updating
-    func membreUpdated(at indexPath: IndexPath){
+    func depenseUpdated(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
     /// called when a Person is added to set
     ///
     /// - Parameter indexPath: (section,row) of add
-    func membreAdded(at indexPath: IndexPath){
+    func depenseAdded(at indexPath: IndexPath){
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
     
     func deleteHandlerAction(action: UITableViewRowAction, indexPath: IndexPath) -> Void{
-        let membre = self.fetchResultController.membreFetched.object(at: indexPath)
-        CoreDataManager.context.delete(membre)
+        //let depense = self.fetchResultController.depenseFetched.object(at: indexPath)
+        //CoreDataManager.context.delete(depense)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -78,16 +99,13 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
     // MARK: - convenience methods
     @discardableResult
     private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) -> UITableViewCell{
-        if let membre = self.membresViewModel.get(membreAt: indexPath.row){
-            if let cel = cell as? MembrePresenterCell {
-                cel.nomMembre.text = String((membre.nom!.prefix(1)))
-                cel.prenomMembre.text = membre.prenom
+        let depense = self.depense[indexPath.row]
+            if let cel = cell as? DepenseViewCell {
                 let dateFormatterPrint = DateFormatter()
                 dateFormatterPrint.dateFormat = "MM/dd/yyyy"
-                let date : String = dateFormatterPrint.string(from: membre.dateArrivee!)
-                cel.dateArriveeMembre.text = date
-                cel.totalDepenseMembre.text = "000"
+                let date : String = dateFormatterPrint.string(from: depense.dateDepense!)
+                cel.date.text = date
+                cel.prix.text = String(depense.montant)
             }
-        }
         return cell }
 }

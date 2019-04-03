@@ -44,7 +44,6 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         catch let error as NSError{
             print("error")
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,7 +95,7 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
     @IBAction func saveAction(_ sender: Any) {
         let montant : String = nomNewDepense.text ?? ""
         //let photo : UIImage? = nil
-        let date : String = dateNewDepense!.date.description
+        let date : Date = dateNewDepense.date
         guard (montant != "") else {return }
         guard let appD = UIApplication.shared.delegate as? AppDelegate else{
             print("error")

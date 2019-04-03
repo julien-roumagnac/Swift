@@ -43,7 +43,7 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
 //    }
 //
     @IBAction func ajoutMAction(_ sender: Any) {
-        if(self.nomNewMembre == nil || self.prenomNewMembre == nil) {
+        if((self.nomNewMembre.text?.isEmpty)! || (self.prenomNewMembre.text?.isEmpty)!) {
             return
         }
         else {
@@ -63,7 +63,7 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
         let newMembre = Membres(context: context)
         newMembre.nom = self.nomNewMembre.text
         newMembre.prenom = self.prenomNewMembre.text
-        newMembre.dateArrivee = self.dateArriveeNewMembre.date.description
+        newMembre.dateArrivee = self.dateArriveeNewMembre.date
         newMembre.dateDepart = nil
         newMembre.destination = voyage
         self.nomNewMembre.text = ""

@@ -68,7 +68,7 @@ class MembreSetViewModel{
     ///   - date: departure date
     public func updateDepartureDate(atIndexPath indexPath: IndexPath, withDate date: Date){
         let membre = self.membreFetch.object(at: indexPath)
-        membre.dateDepart = date.description
+        membre.dateDepart = date
         self.delegate?.membreUpdated(at: indexPath)
     } }
 
