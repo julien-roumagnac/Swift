@@ -28,7 +28,10 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         let context = CoreDataManager.context
         let voyage = Voyage(context: context)
         voyage.nom = nom
-        voyage.dateDebut = self.dateVoyage.date.description
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MM/dd/yyyy"
+        let date : String = dateFormatterPrint.string(from: self.dateVoyage.date)
+        voyage.dateDebut = date
         voyage.photo = (self.photoNewVoyage.image ?? UIImage(named: "placeholder")!).pngData()
         for membre in membres {
             voyage.addToVoyageurs(membre)

@@ -89,7 +89,7 @@ class VoyageTableViewController : NSObject, UITableViewDelegate, UITableViewData
 //                dateFormatterPrint.dateFormat = "MM/dd/yyyy"
 //                let date : String = dateFormatterPrint.string(from: voyage.dateDebut!)
                 cel.nomVoyage.text = voyage.nom
-                cel.dateVoyage.text = voyage.dateDebut!
+                cel.dateVoyage.text = String(voyage.dateDebut!.prefix(10))
                 cel.imageVoyage.image = UIImage(data: voyage.photo! )
             }
         }
