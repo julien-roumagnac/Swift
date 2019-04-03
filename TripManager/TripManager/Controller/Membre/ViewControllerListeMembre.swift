@@ -19,6 +19,8 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var prenomNewMembre: UITextField!
     @IBOutlet weak var dateArriveeNewMembre: UIDatePicker!
     
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var titre: UILabel!
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -30,6 +32,8 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view, typically from a nib.
         self.tableViewController = MembreTableViewController(tableView: self.tableView, voyage: voyage!)
+        self.image.image = UIImage(data: (self.voyage?.photo!)!)!
+        self.titre.text = self.voyage?.nom
     }
     
     override func didReceiveMemoryWarning() {
