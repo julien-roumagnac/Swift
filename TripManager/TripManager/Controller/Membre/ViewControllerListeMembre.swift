@@ -41,13 +41,7 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-//    @IBAction func deleteMAction(_ sender: UIButton) {
-//        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: self.tableMembres)
-//        let indexPath = self.tableMembres.indexPathForRow(at: buttonPosition)
-//        self.deleteNewMembre(at: indexPath!.row)
-//        tableMembres.reloadData()
-//    }
-//
+
     @IBAction func ajoutMAction(_ sender: Any) {
         if((self.nomNewMembre.text?.isEmpty)! || (self.prenomNewMembre.text?.isEmpty)!) {
             return
@@ -94,25 +88,4 @@ class ViewControllerListeMembre : UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    
-   /* @IBAction func addAction(_ sender: Any) {
-        let cf: Membres
-        let df = DateFormatter()
-        df.dateFormat = "dd-mm-yyyy"
-        if let bdate = df.date(from: "01-06-1988"){
-            //cf = Person(firstname: "Christophe", lastname: "Fiorio", birthdate: bdate)
-        }
-        else{
-            cf = Person(firstname: "Christophe", lastname: "Fiorio", birthdate: Date())
-        }
-        self.tableViewController.personsViewModel.add(person: cf)
-        //self.tableView.reloadData()
-    }
-    @IBAction func updateAction(_ sender: Any) {
-        guard let index = self.tableView.indexPathForSelectedRow else{
-            return
-        }
-        self.tableViewController.personsViewModel.updateBirthDate(atIndexPath: index, withDate: Date())
-    }*/
 }

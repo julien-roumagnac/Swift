@@ -84,10 +84,6 @@ class VoyageTableViewController : NSObject, UITableViewDelegate, UITableViewData
     private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) -> UITableViewCell{
         if let voyage = self.voyageViewModel.get(voyageAt: indexPath.row){
             if let cel = cell as? VoyageTableViewCell {
-                
-//                let dateFormatterPrint = DateFormatter()
-//                dateFormatterPrint.dateFormat = "MM/dd/yyyy"
-//                let date : String = dateFormatterPrint.string(from: voyage.dateDebut!)
                 cel.nomVoyage.text = voyage.nom
                 cel.dateVoyage.text = String(voyage.dateDebut!.prefix(10))
                 cel.imageVoyage.image = UIImage(data: voyage.photo! )

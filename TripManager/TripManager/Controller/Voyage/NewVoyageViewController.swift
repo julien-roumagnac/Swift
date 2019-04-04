@@ -106,7 +106,13 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
     //MARK - Photo Manager
     
     @IBAction func displayActionSheet(_ sender: Any) {
+        
         let alert = UIAlertController(title: "Update your photo", message: "Please select an option", preferredStyle: .actionSheet)
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
         
         alert.addAction(UIAlertAction(title: "Take a new photo", style: .default , handler:{ (UIAlertAction)in
             self.presentUIImagePicker(sourceType: .camera)
@@ -120,8 +126,8 @@ class NewVoyageViewController: UIViewController, UITextFieldDelegate, UITableVie
         }))
         
         self.present(alert, animated: true, completion: {
-            print("completion block")
         })
+
     }
     
     private func presentUIImagePicker(sourceType: UIImagePickerController.SourceType) {

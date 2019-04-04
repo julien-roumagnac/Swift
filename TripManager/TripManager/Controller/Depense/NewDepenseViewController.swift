@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 import CoreData
 
+
 class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
     var voyage : Voyage?
     
@@ -44,6 +45,8 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         catch let error as NSError{
             print("error")
         }
+        self.nomNewDepense.keyboardType = UIKeyboardType.numberPad
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,8 +62,8 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         let membre = self.membresFetched.object(at: indexPath)
         cell.nom?.text = String((membre.nom?.prefix(1))!)
         cell.prenom?.text = membre.prenom
-        cell.montantDu?.text = "0"
-        cell.montantPaye?.text = "0"
+        cell.montantDu?.keyboardType = UIKeyboardType.numberPad
+        cell.montantPaye?.keyboardType = UIKeyboardType.numberPad
         return cell
     }
     
@@ -142,7 +145,13 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
     //MARK - Photo Manager
     
     @IBAction func displayActionSheet(_ sender: Any) {
+        
         let alert = UIAlertController(title: "Update your photo", message: "Please select an option", preferredStyle: .actionSheet)
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
         
         alert.addAction(UIAlertAction(title: "Take a new photo", style: .default , handler:{ (UIAlertAction)in
             self.presentUIImagePicker(sourceType: .camera)
@@ -156,8 +165,8 @@ class NewDepenseViewController : UIViewController, UITextFieldDelegate, UITableV
         }))
         
         self.present(alert, animated: true, completion: {
-            print("completion block")
         })
+
     }
     
     private func presentUIImagePicker(sourceType: UIImagePickerController.SourceType) {

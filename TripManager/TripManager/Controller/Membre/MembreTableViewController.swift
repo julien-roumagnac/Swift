@@ -99,7 +99,9 @@ class MembreTableViewController : NSObject, UITableViewDelegate, UITableViewData
                     cel.totalDepenseMembre.text = String(somme)
                 }
                 else{ cel.totalDepenseMembre.text = "0"}
-                
+                if membre.dateDepart != nil {
+                    cel.backgroundColor = UIColor.gray
+                }
             }
         }
         return cell }

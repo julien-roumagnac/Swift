@@ -72,39 +72,5 @@ extension Membres{
         self.dateArrivee = Date()
     }
     
-    /*
-     /// initialize a `Membre`
-     ///
-     /// - Parameters:
-     ///   - firstname: `String` first name of `Person`
-     ///   - lastname:  `String` last name of `Person`
-     ///   - birthdate: `Date` birth date pf `Person`
-     convenience init(firstname: String, lastname: String, birthdate: Date){
-     self.init(context: CoreDataManager.context)
-     self.pfirstname = firstname
-     self.plastname  = lastname
-     self.pbirthdate = birthdate
-     }
-     /// initialize a `Person`
-     ///
-     /// - Parameters:
-     ///   - firstname: `String` first name of `Person`
-     ///   - lastname:  `String` last name of `Person`
-     ///   - birthdate: `Date` birth date pf `Person`
-     convenience init(firstname: String, lastname: String, birthdate: Date, city: String?, country: String?){
-     self.init(context: CoreDataManager.context)
-     self.pfirstname = firstname
-     self.plastname  = lastname
-     self.pbirthdate = birthdate
-     if (city==nil) && (country==nil){
-     self.inhabit = nil
-     } else{
-     if let town = TownDAO.search(forCity: city, andCountry: country){
-     self.inhabit = town
-     } else{
-     self.inhabit = Town(context: CoreDataManager.context)
-     self.inhabit?.pcity    = city
-     self.inhabit?.pcountry = country
-     } }
-     } */}
+   }
 

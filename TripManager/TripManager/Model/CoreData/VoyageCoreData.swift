@@ -50,20 +50,6 @@ extension Voyage{
         self.photo = nil
     }
    
-    
-    /// initialize a `Voyage`
-    ///
-    /// - Parameters:
-    ///   - nom:  `String` name of `Voyage`
-    ///   - photo:  `Image` photo of `Voyage`
-    ///   - dateDebut:  `String` date of `Voyage`
-    ///   - dateFin:  `String` departure date of `Voyage`
-    /*convenience init(nomV: String, dateDebutV: String, photoV : Image){
-        self.init(context: CoreDataManager.context)
-        self.nom = nomV
-        self.dateDebut = dateDebutV
-        self.dateFin = nil
-        self.photo = photoV
-    }*/
+
 
 }
